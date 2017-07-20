@@ -14,6 +14,9 @@ public class BasketballPlayer {
 
     public String playerName = new String();
 
+    //Variables for stats that are being listed on the stat bar
+    int points, rebounds, assists, steals, blocks, madeFt, attemptFt, madeFg, attemptFg;
+
     //Creates string keys for all stats and declare a hashtable to store them
     List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL"));
     Map<String, Integer> playerStats = new HashMap<String, Integer>();
@@ -48,6 +51,8 @@ public class BasketballPlayer {
             playerStats.put(statKey, ++oldStat);
         }
 
+        calculateTotalStats();
+
     }
 
     //Sets the players name
@@ -61,6 +66,20 @@ public class BasketballPlayer {
         for(String stat: this.statKeys){
             System.out.println(stat+":" +playerStats.get(stat));
         }
+    }
+
+
+    //Calculate stats for the bar
+    public void calculateTotalStats(){
+        this.points = 2*playerStats.get("2PM") + 3*playerStats.get("3PM") + playerStats.get("FTM");
+        this.rebounds = playerStats.get("OREB") + playerStats.get("DREB");
+        this.assists = playerStats.get("AST");
+        this.steals = playerStats.get("STL");
+        this.blocks = playerStats.get("BLK");
+        this.madeFg = playerStats.get("2PM") + playerStats.get("3PM");
+        this.attemptFg = playerStats.get("2PA") + playerStats.get("3PA");
+        this.madeFt = playerStats.get("FTM");
+        this.attemptFt = playerStats.get("FTA");
     }
 
 
