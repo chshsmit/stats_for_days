@@ -1,5 +1,7 @@
 package christophershae.stats;
 
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,9 +12,10 @@ import java.util.Map;
  * Created by chrissmith on 7/18/17.
  */
 
-public class BasketballPlayer {
+public class BasketballPlayer  {
 
     public String playerName = new String();
+
 
     //Variables for stats that are being listed on the stat bar
     int points, rebounds, assists, steals, blocks, madeFt, attemptFt, madeFg, attemptFg;
@@ -22,13 +25,17 @@ public class BasketballPlayer {
     Map<String, Integer> playerStats = new HashMap<String, Integer>();
 
     //Constructor for Basketball player class
-    public BasketballPlayer(){
+    public BasketballPlayer(String name){
+
+        this.playerName = name;
         //Initialize all the player's stats to 0
         for(String stat : this.statKeys){
             this.playerStats.put(stat, 0);
             System.out.println(stat+":" +playerStats.get(stat));
         }
     }
+
+
 
     //Padding those stats
     public void increaseStat(String statKey){

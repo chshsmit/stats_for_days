@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="christophershae.stats.CreateRoster">
+
+    <EditText
+        android:id="@+id/enterPlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player Name" />
+
+    <Button
+        android:id="@+id/addPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterPlayerName"
+        android:layout_marginLeft="425dp"
+        android:onClick="createPlayer"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/moveToStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enterPlayerName"
+        android:layout_toRightOf="@+id/addPlayer"
+        android:onClick="changeToStats"
+        android:text="Finish" />
+</RelativeLayout>

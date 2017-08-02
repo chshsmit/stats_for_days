@@ -1,352 +1,604 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="64dp"
-    android:paddingRight="64dp"
-    android:paddingTop="16dp"
-    tools:context="christophershae.stats.TableActivity">
 
-
-    <TextView
-        android:id="@+id/activePlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-
-        android:text="Player Name"
-        android:textAlignment="center" />
-
-    <TableLayout
-        android:id="@+id/tableLayout"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activePlayer1"
-        android:shrinkColumns="*"
-        android:stretchColumns="*">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
+        android:paddingTop="16dp"
+        tools:context="christophershae.stats.TableActivity">
 
-        <TableRow
+
+        <TextView
+            android:id="@+id/activePlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:text="Player Name"
+            android:textAlignment="center" />
+
+        <TableLayout
+            android:id="@+id/Player1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer1"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
 
-            <Button
-                android:id="@+id/fgMadePlayer1"
-                android:layout_height="30dp"
-                android:layout_above="@+id/tableLayout"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="2PM"
-                android:textSize="8sp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/threeFgMadePlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="3PM"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/fgMadePlayer1"
+                    android:layout_height="30dp"
+                    android:layout_above="@+id/tableLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="2PM"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/astPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="AST"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/threeFgMadePlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="3PM"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/orebPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="OREB"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/astPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="AST"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/blkPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="BLK"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/orebPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="OREB"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/ftmPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="FTM"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/blkPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="BLK"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/toPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:onClick="addStat"
-                android:text="TO"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/ftmPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="FTM"
+                    android:textSize="8sp" />
 
-        </TableRow>
+                <Button
+                    android:id="@+id/toPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="TO"
+                    android:textSize="8sp" />
 
-        <TableRow
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/fgAttemptedPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="2PA"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/threeFgAttemptedPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="3PA"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/passPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="PASS"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/drebPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="DREB"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/stlPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="STL"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/ftaPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="FTA"
+                    android:textSize="8sp" />
+
+                <Button
+                    android:id="@+id/foulPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="FOUL"
+                    android:textSize="8sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
+
+                <TextView
+                    android:id="@+id/ptsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Pts"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/fgsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="FG"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/rebsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Reb"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/astsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Ast"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/stlsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Stl"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/blksPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Blk"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/ftsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Ft"
+                    android:textSize="10sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/totPtsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totFgsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0-0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totReboundsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totAstPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totStlPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totBlkPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/totFtsPlayer1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0-0"
+                    android:textSize="10sp" />
+            </TableRow>
+        </TableLayout>
+
+
+        <TextView
+            android:id="@+id/activePlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Shooting Guard" />
+
+        <TableLayout
+            android:id="@+id/Player2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer2"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
 
-            <Button
-                android:id="@+id/fgAttemptedPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="2PA"
-                android:textSize="8sp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/threeFgAttemptedPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="3PA"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/fgMadePlayer2"
+                    android:layout_height="30dp"
+                    android:layout_above="@+id/tableLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="2PM"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/passPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="PASS"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/threeFgMadePlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="3PM"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/drebPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="DREB"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/astPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="AST"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/stlPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="STL"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/orebPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="OREB"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/ftaPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="FTA"
-                android:textSize="8sp" />
+                <Button
+                    android:id="@+id/blkPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="BLK"
+                    android:textSize="8sp" />
 
-            <Button
-                android:id="@+id/foulPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:onClick="addStat"
-                android:text="FOUL"
-                android:textSize="8sp" />
-        </TableRow>
+                <Button
+                    android:id="@+id/ftmPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="FTM"
+                    android:textSize="8sp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="10dp">
+                <Button
+                    android:id="@+id/toPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="addStat"
+                    android:text="TO"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Pts"
-                android:textSize="10sp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="FG"
-                android:textSize="10sp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Reb"
-                android:textSize="10sp" />
+                <Button
+                    android:id="@+id/fgAttemptedPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="2PA"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Ast"
-                android:textSize="10sp" />
+                <Button
+                    android:id="@+id/threeFgAttemptedPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="3PA"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Stl"
-                android:textSize="10sp" />
+                <Button
+                    android:id="@+id/passPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="PASS"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Blk"
-                android:textSize="10sp" />
+                <Button
+                    android:id="@+id/drebPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="DREB"
+                    android:textSize="8sp" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Ft"
-                android:textSize="10sp" />
+                <Button
+                    android:id="@+id/stlPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="STL"
+                    android:textSize="8sp" />
 
-        </TableRow>
+                <Button
+                    android:id="@+id/ftaPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="FTA"
+                    android:textSize="8sp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/foulPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:onClick="addStat"
+                    android:text="FOUL"
+                    android:textSize="8sp" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/totPtsPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="10sp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
 
-            <TextView
-                android:id="@+id/totFgsPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0-0"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Pts"
+                    android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/totReboundsPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="FG"
+                    android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/totAstPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Reb"
+                    android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/totStlPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Ast"
+                    android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/totBlkPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Stl"
+                    android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/totFtsPlayer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="0-0"
-                android:textSize="10sp" />
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Blk"
+                    android:textSize="10sp" />
 
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Ft"
+                    android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activePlayer1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Shooting Guard" />
+            </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="80dp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Small Forward" />
+                <TextView
+                    android:id="@+id/totPtsPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="80dp" />
+                <TextView
+                    android:id="@+id/totFgsPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0-0"
+                    android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Power Forward" />
+                <TextView
+                    android:id="@+id/totReboundsPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="80dp" />
+                <TextView
+                    android:id="@+id/totAstPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Center" />
+                <TextView
+                    android:id="@+id/totStlPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_below="@+id/textView5"
-        android:layout_marginTop="80dp" />
+                <TextView
+                    android:id="@+id/totBlkPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0"
+                    android:textSize="10sp" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/totFtsPlayer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="0-0"
+                    android:textSize="10sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/activePlayer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Small Forward" />
+
+        <TextView
+            android:id="@+id/activePlayer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Power Forward" />
+
+        <TextView
+            android:id="@+id/activePlayer5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activePlayer4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Center" />
+
+    </RelativeLayout>
+
+</ScrollView>
