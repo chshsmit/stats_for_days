@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="64dp"
+    android:paddingRight="64dp"
+    android:paddingTop="16dp"
     tools:context="christophershae.stats.CreateRoster">
 
     <EditText
@@ -33,4 +37,15 @@
         android:layout_toRightOf="@+id/addPlayer"
         android:onClick="changeToStats"
         android:text="Finish" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/moveToStats"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="5dp" />
 </RelativeLayout>

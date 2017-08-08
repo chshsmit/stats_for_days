@@ -62,10 +62,6 @@ public class BasketballPlayer  {
 
     }
 
-    //Sets the players name
-    public void setPlayerName(String name){
-        this.playerName = name;
-    }
 
 
     //Prints out all the stats

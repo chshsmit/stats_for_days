@@ -1,16 +1,30 @@
 package christophershae.stats;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.checkboxStyle;
 import static android.R.attr.key;
+import static android.R.id.list;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
@@ -27,10 +41,90 @@ public class TableActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+
+
+    }
+
+
     BasketballPlayer Player1 = new BasketballPlayer("Player 1");      //This guy is just a tester
 
     List<BasketballPlayer> myRoster = new ArrayList<BasketballPlayer>();
     List<BasketballPlayer> activeRoster = new ArrayList<BasketballPlayer>();
+    ArrayList<String> roster = new ArrayList<String>();
+    ArrayList mSelectedItems = new ArrayList();
+
+
+
+    public class Adapter extends ArrayAdapter {
+        Context mContext;
+        int resourceID;
+        ArrayList<String> names;
+        public Adapter(Context context, int resource, ArrayList<String> objects) {
+            super(context, resource, objects);
+            this.mContext = context;
+            this.resourceID=resource;
+            this.names= objects;
+        }
+
+        @Override
+        public String getItem(int position) {
+            return names.get(position);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View row = convertView;
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            row = inflater.inflate(resourceID, parent, false);
+
+            TextView text = (TextView) row.findViewById(R.id.playerName);
+
+            text.setText(roster.get(position));
+            return row;
+        }
+
+    }
+
+
+    public void playerNameClicked(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+        // Set the dialog title
+        builder.setTitle("Roster");
+        // Specify the list array, the items to be selected by default (null for none),
+        // and the listener through which to receive callbacks when items are selected
+        builder.setMultiChoiceItems(roster.toArray(new CharSequence[roster.size()]),null,
+                new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which,
+                                        boolean isChecked) {
+                        if (isChecked) {
+                            // If the user checked the item, add it to the selected items
+                            mSelectedItems.add(which);
+                        } else if (mSelectedItems.contains(which)) {
+                            // Else, if the item is already in the array, remove it
+                            mSelectedItems.remove(which);
+                        }
+                    }
+                });
+        // Set the action buttons
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK, so save the mSelectedItems results somewhere
+                // or return them to the component that opened the dialog
+                //...
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //...
+            }
+        });
+        builder.show();
+    }
 
 
     //----------------------------------------------------------------------------------------------------------------
@@ -43,7 +137,9 @@ public class TableActivity extends AppCompatActivity {
             //To Implement
             BasketballPlayer nextPlayer = new BasketballPlayer(name);
             myRoster.add(nextPlayer);
+            roster.add(name);
         }
+
         setActiveRoster();
         printPlayerNames();
         printActiveRoster();
@@ -115,12 +211,6 @@ public class TableActivity extends AppCompatActivity {
                 System.out.println("You failed");
                 break;
         }
-
-
-
-        //activeRoster.get(0).increaseStat(statKey);
-        //setStatsToBar();
-        activeRoster.get(0).showStats();
     }
 
 
