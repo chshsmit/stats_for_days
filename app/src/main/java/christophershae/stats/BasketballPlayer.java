@@ -20,8 +20,13 @@ public class BasketballPlayer  {
     //Variables for stats that are being listed on the stat bar
     int points, rebounds, assists, steals, blocks, madeFt, attemptFt, madeFg, attemptFg;
 
+    public int secondsPlayed;
+    public int totalSecondsPlayed = 0;
+
+    public int startTime, takeoutTime;
+
     //Creates string keys for all stats and declare a hashtable to store them
-    List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL"));
+    List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL","MINUTES"));
     Map<String, Integer> playerStats = new HashMap<String, Integer>();
 
     //Constructor for Basketball player class
@@ -33,6 +38,11 @@ public class BasketballPlayer  {
             this.playerStats.put(stat, 0);
             System.out.println(stat+":" +playerStats.get(stat));
         }
+    }
+
+    public void calculateMinutes(){
+        secondsPlayed = startTime - takeoutTime;
+        totalSecondsPlayed += secondsPlayed;
     }
 
 

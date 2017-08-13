@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Stats</string>
+    <string name="two_pointer_made">2PM</string>
+    <string name="two_pointer_atttempted">2PA</string>
+    <string name="three_pointer_made">3PM</string>
+    <string name="three_pointer_attempted">3PA</string>
+    <string name="assist">AST</string>
+    <string name="pass">PASS</string>
+    <string name="offensive_rebound">OREB</string>
+    <string name="defensive_rebound">DREB</string>
+    <string name="block">BLK</string>
+    <string name="steal">STL</string>
+    <string name="free_throw_made">FTM</string>
+    <string name="free_throw_attempted">FTA</string>
+    <string name="turnover">TO</string>
+    <string name="foul">FOUL</string>
+    <string name="points">PTS</string>
+    <string name="field_goals">FG</string>
+    <string name="rebounds">REB</string>
+    <string name="free_throws">FT</string>
+    <string name="zero">0</string>
+    <string name="zero_for_zero">0-0</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="newQuarter">NEXT</string>
+
 </resources>

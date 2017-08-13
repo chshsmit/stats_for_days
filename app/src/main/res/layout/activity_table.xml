@@ -20,10 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
             android:clickable="true"
             android:onClick="playerNameClicked"
             android:text="Player Name"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/Player1"
@@ -39,73 +42,58 @@
 
                 <Button
                     android:id="@+id/fgMadePlayer1"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tableLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PM"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgMadePlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PM"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/astPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="AST"
-                    android:textSize="8sp" />
+                    android:text="@string/assist"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="OREB"
-                    android:textSize="8sp" />
+                    android:text="@string/offensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/blkPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="BLK"
-                    android:textSize="8sp" />
+                    android:text="@string/block"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftmPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTM"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="TO"
-                    android:textSize="8sp" />
+                    android:text="@string/turnover"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -116,58 +104,58 @@
                 <Button
                     android:id="@+id/fgAttemptedPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PA"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_atttempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgAttemptedPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PA"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/passPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="PASS"
-                    android:textSize="8sp" />
+                    android:text="@string/pass"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="DREB"
-                    android:textSize="8sp" />
+                    android:text="@string/defensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/stlPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="STL"
-                    android:textSize="8sp" />
+                    android:text="@string/steal"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftaPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTA"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer1"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FOUL"
-                    android:textSize="8sp" />
+                    android:text="@string/foul"
+                    android:textSize="12sp" />
             </TableRow>
 
             <TableRow
@@ -179,56 +167,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Pts"
-                    android:textSize="10sp" />
+                    android:text="@string/points"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/fgsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="FG"
-                    android:textSize="10sp" />
+                    android:text="@string/field_goals"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rebsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Reb"
-                    android:textSize="10sp" />
+                    android:text="@string/rebounds"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/astsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ast"
-                    android:textSize="10sp" />
+                    android:text="@string/assist"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/stlsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Stl"
-                    android:textSize="10sp" />
+                    android:text="@string/steal"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/blksPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Blk"
-                    android:textSize="10sp" />
+                    android:text="@string/block"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ftsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ft"
-                    android:textSize="10sp" />
+                    android:text="@string/free_throws"
+                    android:textSize="14sp" />
 
             </TableRow>
 
@@ -241,56 +229,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFgsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totReboundsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totAstPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totStlPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totBlkPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFtsPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
             </TableRow>
         </TableLayout>
 
@@ -301,8 +289,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activePlayer1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="Shooting Guard" />
+            android:layout_marginTop="125dp"
+            android:clickable="true"
+            android:onClick="playerNameClicked"
+            android:text="Shooting Guard"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/Player2"
@@ -318,73 +310,58 @@
 
                 <Button
                     android:id="@+id/fgMadePlayer2"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tableLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PM"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgMadePlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PM"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/astPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="AST"
-                    android:textSize="8sp" />
+                    android:text="@string/assist"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="OREB"
-                    android:textSize="8sp" />
+                    android:text="@string/offensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/blkPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="BLK"
-                    android:textSize="8sp" />
+                    android:text="@string/block"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftmPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTM"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="TO"
-                    android:textSize="8sp" />
+                    android:text="@string/turnover"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -395,58 +372,58 @@
                 <Button
                     android:id="@+id/fgAttemptedPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PA"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_atttempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgAttemptedPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PA"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/passPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="PASS"
-                    android:textSize="8sp" />
+                    android:text="@string/pass"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="DREB"
-                    android:textSize="8sp" />
+                    android:text="@string/defensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/stlPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="STL"
-                    android:textSize="8sp" />
+                    android:text="@string/steal"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftaPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTA"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer2"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FOUL"
-                    android:textSize="8sp" />
+                    android:text="@string/foul"
+                    android:textSize="12sp" />
             </TableRow>
 
             <TableRow
@@ -458,56 +435,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Pts"
-                    android:textSize="10sp" />
+                    android:text="@string/points"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="FG"
-                    android:textSize="10sp" />
+                    android:text="@string/field_goals"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Reb"
-                    android:textSize="10sp" />
+                    android:text="@string/rebounds"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ast"
-                    android:textSize="10sp" />
+                    android:text="@string/assist"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Stl"
-                    android:textSize="10sp" />
+                    android:text="@string/steal"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Blk"
-                    android:textSize="10sp" />
+                    android:text="@string/block"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ft"
-                    android:textSize="10sp" />
+                    android:text="@string/free_throws"
+                    android:textSize="14sp" />
 
             </TableRow>
 
@@ -520,56 +497,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFgsPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totReboundsPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totAstPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totStlPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totBlkPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFtsPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
             </TableRow>
         </TableLayout>
 
@@ -579,8 +556,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activePlayer2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="Small Forward" />
+            android:layout_marginTop="125dp"
+            android:clickable="true"
+            android:onClick="playerNameClicked"
+            android:text="Small Forward"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/Player3"
@@ -596,73 +577,58 @@
 
                 <Button
                     android:id="@+id/fgMadePlayer3"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tableLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PM"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgMadePlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PM"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/astPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="AST"
-                    android:textSize="8sp" />
+                    android:text="@string/assist"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="OREB"
-                    android:textSize="8sp" />
+                    android:text="@string/offensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/blkPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="BLK"
-                    android:textSize="8sp" />
+                    android:text="@string/block"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftmPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTM"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="TO"
-                    android:textSize="8sp" />
+                    android:text="@string/turnover"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -673,58 +639,58 @@
                 <Button
                     android:id="@+id/fgAttemptedPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PA"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_atttempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgAttemptedPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PA"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/passPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="PASS"
-                    android:textSize="8sp" />
+                    android:text="@string/pass"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="DREB"
-                    android:textSize="8sp" />
+                    android:text="@string/defensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/stlPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="STL"
-                    android:textSize="8sp" />
+                    android:text="@string/steal"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftaPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTA"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer3"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FOUL"
-                    android:textSize="8sp" />
+                    android:text="@string/foul"
+                    android:textSize="12sp" />
             </TableRow>
 
             <TableRow
@@ -736,56 +702,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Pts"
-                    android:textSize="10sp" />
+                    android:text="@string/points"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/fgsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="FG"
-                    android:textSize="10sp" />
+                    android:text="@string/field_goals"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rebsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Reb"
-                    android:textSize="10sp" />
+                    android:text="@string/rebounds"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/astsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ast"
-                    android:textSize="10sp" />
+                    android:text="@string/assist"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/stlsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Stl"
-                    android:textSize="10sp" />
+                    android:text="@string/steal"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/blksPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Blk"
-                    android:textSize="10sp" />
+                    android:text="@string/block"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ftsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ft"
-                    android:textSize="10sp" />
+                    android:text="@string/free_throws"
+                    android:textSize="14sp" />
 
             </TableRow>
 
@@ -798,56 +764,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFgsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totReboundsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totAstPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totStlPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totBlkPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFtsPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
             </TableRow>
         </TableLayout>
 
@@ -857,8 +823,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activePlayer3"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="Power Forward" />
+            android:layout_marginTop="125dp"
+            android:clickable="true"
+            android:onClick="playerNameClicked"
+            android:text="Power Forward"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/Player4"
@@ -874,73 +844,58 @@
 
                 <Button
                     android:id="@+id/fgMadePlayer4"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tableLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PM"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgMadePlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PM"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/astPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="AST"
-                    android:textSize="8sp" />
+                    android:text="@string/assist"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="OREB"
-                    android:textSize="8sp" />
+                    android:text="@string/offensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/blkPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="BLK"
-                    android:textSize="8sp" />
+                    android:text="@string/block"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftmPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTM"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="TO"
-                    android:textSize="8sp" />
+                    android:text="@string/turnover"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -951,58 +906,58 @@
                 <Button
                     android:id="@+id/fgAttemptedPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PA"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_atttempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgAttemptedPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PA"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/passPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="PASS"
-                    android:textSize="8sp" />
+                    android:text="@string/pass"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="DREB"
-                    android:textSize="8sp" />
+                    android:text="@string/defensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/stlPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="STL"
-                    android:textSize="8sp" />
+                    android:text="@string/steal"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftaPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTA"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer4"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FOUL"
-                    android:textSize="8sp" />
+                    android:text="@string/foul"
+                    android:textSize="12sp" />
             </TableRow>
 
             <TableRow
@@ -1014,56 +969,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Pts"
-                    android:textSize="10sp" />
+                    android:text="@string/points"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/fgsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="FG"
-                    android:textSize="10sp" />
+                    android:text="@string/field_goals"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rebsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Reb"
-                    android:textSize="10sp" />
+                    android:text="@string/rebounds"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/astsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ast"
-                    android:textSize="10sp" />
+                    android:text="@string/assist"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/stlsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Stl"
-                    android:textSize="10sp" />
+                    android:text="@string/steal"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/blksPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Blk"
-                    android:textSize="10sp" />
+                    android:text="@string/block"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ftsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ft"
-                    android:textSize="10sp" />
+                    android:text="@string/free_throws"
+                    android:textSize="14sp" />
 
             </TableRow>
 
@@ -1076,56 +1031,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFgsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totReboundsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totAstPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totStlPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totBlkPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFtsPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
             </TableRow>
         </TableLayout>
 
@@ -1135,8 +1090,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activePlayer4"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="Center" />
+            android:layout_marginTop="125dp"
+            android:clickable="true"
+            android:onClick="playerNameClicked"
+            android:text="Center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:id="@+id/Player5"
@@ -1152,73 +1111,58 @@
 
                 <Button
                     android:id="@+id/fgMadePlayer5"
-                    android:layout_height="30dp"
-                    android:layout_above="@+id/tableLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PM"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgMadePlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PM"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/astPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="AST"
-                    android:textSize="8sp" />
+                    android:text="@string/assist"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="OREB"
-                    android:textSize="8sp" />
+                    android:text="@string/offensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/blkPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="BLK"
-                    android:textSize="8sp" />
+                    android:text="@string/block"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftmPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTM"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_made"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="TO"
-                    android:textSize="8sp" />
+                    android:text="@string/turnover"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -1229,58 +1173,58 @@
                 <Button
                     android:id="@+id/fgAttemptedPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="2PA"
-                    android:textSize="8sp" />
+                    android:text="@string/two_pointer_atttempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/threeFgAttemptedPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="3PA"
-                    android:textSize="8sp" />
+                    android:text="@string/three_pointer_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/passPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="PASS"
-                    android:textSize="8sp" />
+                    android:text="@string/pass"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="DREB"
-                    android:textSize="8sp" />
+                    android:text="@string/defensive_rebound"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/stlPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="STL"
-                    android:textSize="8sp" />
+                    android:text="@string/steal"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/ftaPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FTA"
-                    android:textSize="8sp" />
+                    android:text="@string/free_throw_attempted"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer5"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:onClick="addStat"
-                    android:text="FOUL"
-                    android:textSize="8sp" />
+                    android:text="@string/foul"
+                    android:textSize="12sp" />
             </TableRow>
 
             <TableRow
@@ -1292,56 +1236,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Pts"
-                    android:textSize="10sp" />
+                    android:text="@string/points"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/fgsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="FG"
-                    android:textSize="10sp" />
+                    android:text="@string/field_goals"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/rebsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Reb"
-                    android:textSize="10sp" />
+                    android:text="@string/rebounds"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/astsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ast"
-                    android:textSize="10sp" />
+                    android:text="@string/assist"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/stlsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Stl"
-                    android:textSize="10sp" />
+                    android:text="@string/steal"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/blksPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Blk"
-                    android:textSize="10sp" />
+                    android:text="@string/block"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ftsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="Ft"
-                    android:textSize="10sp" />
+                    android:text="@string/free_throws"
+                    android:textSize="14sp" />
 
             </TableRow>
 
@@ -1354,58 +1298,99 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFgsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totReboundsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totAstPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totStlPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totBlkPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totFtsPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="0-0"
-                    android:textSize="10sp" />
+                    android:text="@string/zero_for_zero"
+                    android:textSize="14sp" />
             </TableRow>
         </TableLayout>
+
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button_start"
+            android:layout_alignBottom="@+id/button_start"
+            android:layout_centerHorizontal="true"
+            android:text="@string/zero"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@+id/button_stop"
+            android:onClick="onClickStart"
+            android:text="@string/start" />
+
+        <Button
+            android:id="@+id/button_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="41dp"
+            android:onClick="onClickStop"
+            android:text="@string/stop"
+            android:layout_alignBaseline="@+id/button_start"
+            android:layout_alignBottom="@+id/button_start"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:id="@+id/newQuarterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newQuarter"
+            android:layout_alignTop="@+id/display"
+            android:onClick="startNewQuarter"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

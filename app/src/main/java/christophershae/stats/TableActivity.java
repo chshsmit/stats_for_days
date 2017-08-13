@@ -4,8 +4,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +18,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.checkboxStyle;
-import static android.R.attr.key;
-import static android.R.id.list;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class TableActivity extends AppCompatActivity {
 
@@ -38,6 +34,7 @@ public class TableActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ArrayList<String> roster = extras.getStringArrayList("roster");
         createRoster(roster);
+        displayTime();
 
     }
 
@@ -47,49 +44,27 @@ public class TableActivity extends AppCompatActivity {
 
     }
 
-
-    BasketballPlayer Player1 = new BasketballPlayer("Player 1");      //This guy is just a tester
-
     List<BasketballPlayer> myRoster = new ArrayList<BasketballPlayer>();
     List<BasketballPlayer> activeRoster = new ArrayList<BasketballPlayer>();
     ArrayList<String> roster = new ArrayList<String>();
     ArrayList mSelectedItems = new ArrayList();
+    int playerId, substitutionPlayerIndex;
 
 
 
-    public class Adapter extends ArrayAdapter {
-        Context mContext;
-        int resourceID;
-        ArrayList<String> names;
-        public Adapter(Context context, int resource, ArrayList<String> objects) {
-            super(context, resource, objects);
-            this.mContext = context;
-            this.resourceID=resource;
-            this.names= objects;
-        }
-
-        @Override
-        public String getItem(int position) {
-            return names.get(position);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View row = convertView;
-            LayoutInflater inflater = LayoutInflater.from(mContext);
-            row = inflater.inflate(resourceID, parent, false);
-
-            TextView text = (TextView) row.findViewById(R.id.playerName);
-
-            text.setText(roster.get(position));
-            return row;
-        }
-
-    }
 
 
+    //----------------------------------------------------------------------------------------------------------------
+    //Functions to make a substitution
+    //----------------------------------------------------------------------------------------------------------------
+
+    //Handles the event of a player's name being clicked indicating a substitution
     public void playerNameClicked(View v){
-        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+
+        if(timer != null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
+        final int viewId = v.getId();
         // Set the dialog title
         builder.setTitle("Roster");
         // Specify the list array, the items to be selected by default (null for none),
@@ -100,11 +75,13 @@ public class TableActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which,
                                         boolean isChecked) {
                         if (isChecked) {
-                            // If the user checked the item, add it to the selected items
-                            mSelectedItems.add(which);
-                        } else if (mSelectedItems.contains(which)) {
+                            //If an item is checked, set the playerId to the viewId
+                            //Also the index of the person coming into the game is the index that was selected in the list
+                            playerId = viewId;
+                            substitutionPlayerIndex = which;
+                        } else if (mSelectedItems.contains(roster.get(which))) {
                             // Else, if the item is already in the array, remove it
-                            mSelectedItems.remove(which);
+                            mSelectedItems.remove(roster.get(which));
                         }
                     }
                 });
@@ -112,44 +89,110 @@ public class TableActivity extends AppCompatActivity {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK, so save the mSelectedItems results somewhere
-                // or return them to the component that opened the dialog
-                //...
+                //User clicked "OK"
+                //Sub the current active player with the selection made from the list
+                subUtilityFunction(playerId, substitutionPlayerIndex);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                //...
+                //The user pressed "CANCEL" so nothing needs to be done
             }
         });
         builder.show();
     }
 
+    public void subUtilityFunction(int viewId, int which){
+        switch(viewId){
+            case R.id.activePlayer1:
+                makeSubstitution(0,which);
+                setActiveRosterNames();
+                setStatsToBarPlayer1();
+                break;
+
+            case R.id.activePlayer2:
+                makeSubstitution(1,which);
+                setActiveRosterNames();
+                setStatsToBarPlayer2();
+                break;
+
+            case R.id.activePlayer3:
+                makeSubstitution(2,which);
+                setActiveRosterNames();
+                setStatsToBarPlayer3();
+                break;
+
+            case R.id.activePlayer4:
+                makeSubstitution(3,which);
+                setActiveRosterNames();
+                setStatsToBarPlayer4();
+                break;
+
+            case R.id.activePlayer5:
+                makeSubstitution(4,which);
+                setActiveRosterNames();
+                setStatsToBarPlayer5();
+                break;
+
+            default:
+                System.out.println("You failed");
+                break;
+        }
+    }
+
+    public void makeSubstitution(int currentActivePlayerIndex, int newPlayerIndex){
+
+        //If the player selected for a substitution is already in the game, do nothing
+        if(activeRoster.contains(myRoster.get(newPlayerIndex))) return;
+
+        //The current player is getting taken out of the game at the current time
+        activeRoster.get(currentActivePlayerIndex).takeoutTime = seconds;
+
+        //Calculate the total minutes the player has currently played
+        activeRoster.get(currentActivePlayerIndex).calculateMinutes();
+
+        //Make the actual substitution
+        activeRoster.set(currentActivePlayerIndex, myRoster.get(newPlayerIndex));
+
+        //Set the new active player start time to the current time
+        activeRoster.get(currentActivePlayerIndex).startTime = seconds;
+
+        //For debugging purposes
+        printPlayerNames();
+    }
+
 
     //----------------------------------------------------------------------------------------------------------------
-    //Setting roster information
+    //Initial roster creation
     //----------------------------------------------------------------------------------------------------------------
+
 
     //Creates the roster with the information from the intent
     public void createRoster(ArrayList<String> playerNames){
         for (String name : playerNames) {
-            //To Implement
+            //Create a new player object for every name in the roster
             BasketballPlayer nextPlayer = new BasketballPlayer(name);
             myRoster.add(nextPlayer);
             roster.add(name);
         }
 
-        setActiveRoster();
+        makeActiveRoster();
+        setActiveRosterNames();
         printPlayerNames();
         printActiveRoster();
     }
 
-    //Sets the starting five on the court
-    public void setActiveRoster(){
+    //Creates the initial starting five
+    public void makeActiveRoster(){
         for(int i=0; i<5; i++){
             activeRoster.add(i, myRoster.get(i));
+            activeRoster.get(i).startTime = seconds;
         }
+    }
+
+    //Puts the starting five names in all the proper text views
+    public void setActiveRosterNames(){
         TextView playerOneName = (TextView) findViewById(R.id.activePlayer1);
         playerOneName.setText(activeRoster.get(0).playerName);
 
@@ -172,6 +215,9 @@ public class TableActivity extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------------------------
 
     public void addStat(View v){
+
+        if(seconds == 0) return;
+
         String statKey = ((Button) v).getText().toString();
 
         int parentId = ((View) v.getParent().getParent()).getId();
@@ -213,9 +259,6 @@ public class TableActivity extends AppCompatActivity {
         }
     }
 
-
-
-    //Displays stats to stat bar for each player
     public void setStatsToBarPlayer1(){
         TextView points = (TextView) findViewById(R.id.totPtsPlayer1);
         points.setText(Integer.toString(activeRoster.get(0).points));
@@ -333,15 +376,119 @@ public class TableActivity extends AppCompatActivity {
 
 
     //------------------------------------------------------------------------------------------------------------------------------
+    //This is where we keep track of the time
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    // Counter for the number of seconds.
+    private int seconds = 480;
+
+    // Countdown timer.
+    private CountDownTimer timer = null;
+
+    // One second.  We use Mickey Mouse time.
+    private static final int ONE_SECOND_IN_MILLIS = 1000;
+
+    public void onClickStart(View v) {
+
+        if (seconds == 0) {
+            cancelTimer();
+        }
+        if (timer == null) {
+            // We create a new timer.
+            timer = new CountDownTimer(seconds * ONE_SECOND_IN_MILLIS, ONE_SECOND_IN_MILLIS) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    seconds = Math.max(0, seconds - 1);
+                    displayTime();
+                }
+
+                @Override
+                public void onFinish() {
+                    seconds = 0;
+                    timer = null;
+                    getMinutesForEndOfQuarter();
+                    printPlayerNames();
+
+                    displayTime();
+                }
+            };
+            timer.start();
+        }
+    }
+
+    public void onClickStop(View v) {
+        cancelTimer();
+        displayTime();
+    }
+
+    private void cancelTimer() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
+    }
+
+    // Updates the time display.
+    private void displayTime() {
+
+        TextView v = (TextView) findViewById(R.id.display);
+        int m = seconds / 60;
+        int s = seconds % 60;
+        v.setText(String.format("%d:%02d", m, s));
+        // Manages the buttons.
+        Button stopButton = (Button) findViewById(R.id.button_stop);
+        Button startButton = (Button) findViewById(R.id.button_start);
+        Button newQuarterButton = (Button) findViewById(R.id.newQuarterButton);
+        startButton.setEnabled(timer == null && seconds > 0);
+        stopButton.setEnabled(timer != null && seconds > 0);
+        newQuarterButton.setEnabled(timer == null && seconds == 0);
+    }
+
+    public void startNewQuarter(View v){
+
+        //Reset the time to the start of a quarter
+        seconds = 480;
+
+        //Set all the active players start times to the beginning of a quarter
+        for(int i = 0; i < 5; i++){
+            activeRoster.get(i).startTime = seconds;
+        }
+
+        displayTime();
+
+    }
+
+
+    public void getMinutesForEndOfQuarter(){
+        for(int i = 0; i < 5; i++){
+            activeRoster.get(i).takeoutTime = 0;
+            activeRoster.get(i).calculateMinutes();
+        }
+    }
+
+
+
+
+    //------------------------------------------------------------------------------------------------------------------------------
     //Debugging tools
     //------------------------------------------------------------------------------------------------------------------------------
 
     public void printPlayerNames(){
         System.out.println("Here is your roster");
         for(BasketballPlayer player: myRoster){
-            System.out.println(player.playerName);
+            System.out.println("Name:" +player.playerName);
+            System.out.println("Seconds Played:" +player.totalSecondsPlayed);
+
         }
     }
+
+    public void printList(ArrayList<String> list){
+        for(String item: list){
+            System.out.println(item);
+        }
+    }
+
+
 
     public void printActiveRoster(){
         System.out.println("Here are the five players on the court");

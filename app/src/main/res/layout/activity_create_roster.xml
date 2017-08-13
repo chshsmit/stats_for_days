@@ -24,10 +24,12 @@
         android:id="@+id/addPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/enterPlayerName"
         android:layout_marginLeft="425dp"
         android:onClick="createPlayer"
-        android:text="Add" />
+        android:text="Add"
+        android:layout_below="@+id/enterPlayerName"
+        android:layout_alignStart="@+id/enterPlayerName"
+        android:layout_marginStart="23dp" />
 
     <Button
         android:id="@+id/moveToStats"
