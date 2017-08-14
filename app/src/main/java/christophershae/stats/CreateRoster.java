@@ -1,6 +1,8 @@
 package christophershae.stats;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -118,6 +120,47 @@ public class CreateRoster extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
     private MyAdapter aa;
 
+    CharSequence[] levelsOfPlay = {"High School", "College", "Professional"};
+    public int quarterTime = 480;
+
+    public void setQuarterTime(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(CreateRoster.this);     //Instantiate the popup that shows the list
+
+        // Set the dialog title
+        builder.setTitle("Select Level of Play");
+
+        builder.setSingleChoiceItems(levelsOfPlay,0, null);
+        // Set the action buttons
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //User clicked "OK"
+                //Sub the current active player with the selection made from the list
+                switch(((AlertDialog)dialog).getListView().getCheckedItemPosition()){
+                    case 0:
+                        quarterTime = 480;
+                        break;
+
+                    case 1:
+                        quarterTime = 600;
+                        break;
+
+                    case 2:
+                        quarterTime = 720;
+                        break;
+                }
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //The user pressed "CANCEL" so nothing needs to be done
+            }
+        });
+        builder.show();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,28 +176,6 @@ public class CreateRoster extends AppCompatActivity {
 
 
 
-//    public void clickRefresh (View v) {
-//        Log.i(LOG_TAG, "Requested a refresh of the list");
-//        Random rn = new Random();
-//        SecureRandomString srs = new SecureRandomString();
-//        // How long a list do we make?
-//        int n = 4 + rn.nextInt(10);
-//        // Let's fill the array with n random strings.
-//        // NOTE: aList is associated to the array adapter aa, so
-//        // we cannot do here aList = new ArrayList<ListElement>() ,
-//        // otherwise we create another ArrayList which would not be
-//        // associated with aa.
-//        // aList = new ArrayList<ListElement>(); --- NO
-//        aList.clear();
-//        for (int i = 0; i < n; i++) {
-//            aList.add(new ListElement(
-//                    srs.nextString(), "Delete"
-//            ));
-//        }
-//        // We notify the ArrayList adapter that the underlying list has changed,
-//        // triggering a re-rendering of the list.
-//        aa.notifyDataSetChanged();
-//    }
 
     public void createPlayer(View v){
         EditText playerEntry = (EditText) findViewById(R.id.enterPlayerName);
@@ -166,9 +187,12 @@ public class CreateRoster extends AppCompatActivity {
         playerEntry.setText("");
     }
 
+
+
     public void changeToStats(View v){
         Intent changingActivities = new Intent(getApplicationContext(), TableActivity.class);
         changingActivities.putStringArrayListExtra("roster", names);
+        changingActivities.putExtra("quarter_length", quarterTime);
         changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingActivities);
     }

@@ -23,5 +23,6 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="newQuarter">NEXT</string>
+    <string name="time">Time</string>
 
 </resources>

@@ -21,7 +21,9 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 public class TableActivity extends AppCompatActivity {
@@ -33,7 +35,7 @@ public class TableActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         ArrayList<String> roster = extras.getStringArrayList("roster");
-        createRoster(roster);
+        createRoster(roster, extras.getInt("quarter_length"));
         displayTime();
 
     }
@@ -44,11 +46,16 @@ public class TableActivity extends AppCompatActivity {
 
     }
 
+    List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL","MINUTES"));
     List<BasketballPlayer> myRoster = new ArrayList<BasketballPlayer>();
     List<BasketballPlayer> activeRoster = new ArrayList<BasketballPlayer>();
     ArrayList<String> roster = new ArrayList<String>();
     ArrayList mSelectedItems = new ArrayList();
     int playerId, substitutionPlayerIndex;
+
+    //Initial quarter number
+    int currentQuarter = 1;
+    int defaultQuarterLength;
 
 
 
@@ -66,31 +73,17 @@ public class TableActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
         final int viewId = v.getId();
         // Set the dialog title
-        builder.setTitle("Roster");
-        // Specify the list array, the items to be selected by default (null for none),
-        // and the listener through which to receive callbacks when items are selected
-        builder.setMultiChoiceItems(roster.toArray(new CharSequence[roster.size()]),null,
-                new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which,
-                                        boolean isChecked) {
-                        if (isChecked) {
-                            //If an item is checked, set the playerId to the viewId
-                            //Also the index of the person coming into the game is the index that was selected in the list
-                            playerId = viewId;
-                            substitutionPlayerIndex = which;
-                        } else if (mSelectedItems.contains(roster.get(which))) {
-                            // Else, if the item is already in the array, remove it
-                            mSelectedItems.remove(roster.get(which));
-                        }
-                    }
-                });
+        builder.setTitle("Select a player to sub in");
+
+        builder.setSingleChoiceItems(roster.toArray(new CharSequence[roster.size()]),0, null);
         // Set the action buttons
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 //User clicked "OK"
                 //Sub the current active player with the selection made from the list
+                playerId = viewId;
+                substitutionPlayerIndex = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
                 subUtilityFunction(playerId, substitutionPlayerIndex);
             }
         });
@@ -168,8 +161,11 @@ public class TableActivity extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------------------------
 
 
-    //Creates the roster with the information from the intent
-    public void createRoster(ArrayList<String> playerNames){
+    //Creates the roster with the information from the intent and sets the time for a quarter
+    public void createRoster(ArrayList<String> playerNames, int quarterLength){
+        defaultQuarterLength = quarterLength;
+        seconds = defaultQuarterLength;
+
         for (String name : playerNames) {
             //Create a new player object for every name in the roster
             BasketballPlayer nextPlayer = new BasketballPlayer(name);
@@ -216,7 +212,7 @@ public class TableActivity extends AppCompatActivity {
 
     public void addStat(View v){
 
-        if(seconds == 0) return;
+        if(seconds == 0 || timer == null) return;
 
         String statKey = ((Button) v).getText().toString();
 
@@ -225,31 +221,31 @@ public class TableActivity extends AppCompatActivity {
         switch(parentId){
             case R.id.Player1:
                 System.out.println("Player1");
-                activeRoster.get(0).increaseStat(statKey);
+                activeRoster.get(0).increaseStat(statKey, currentQuarter);
                 setStatsToBarPlayer1();
                 break;
 
             case R.id.Player2:
                 System.out.println("Player2");
-                activeRoster.get(1).increaseStat(statKey);
+                activeRoster.get(1).increaseStat(statKey, currentQuarter);
                 setStatsToBarPlayer2();
                 break;
 
             case R.id.Player3:
                 System.out.println("Player3");
-                activeRoster.get(2).increaseStat(statKey);
+                activeRoster.get(2).increaseStat(statKey, currentQuarter);
                 setStatsToBarPlayer3();
                 break;
 
             case R.id.Player4:
                 System.out.println("Player4");
-                activeRoster.get(3).increaseStat(statKey);
+                activeRoster.get(3).increaseStat(statKey, currentQuarter);
                 setStatsToBarPlayer4();
                 break;
 
             case R.id.Player5:
                 System.out.println("Player5");
-                activeRoster.get(4).increaseStat(statKey);
+                activeRoster.get(4).increaseStat(statKey, currentQuarter);
                 setStatsToBarPlayer5();
                 break;
 
@@ -380,7 +376,7 @@ public class TableActivity extends AppCompatActivity {
     //------------------------------------------------------------------------------------------------------------------------------
 
     // Counter for the number of seconds.
-    private int seconds = 480;
+    private int seconds;
 
     // Countdown timer.
     private CountDownTimer timer = null;
@@ -447,13 +443,16 @@ public class TableActivity extends AppCompatActivity {
     public void startNewQuarter(View v){
 
         //Reset the time to the start of a quarter
-        seconds = 480;
+        seconds = defaultQuarterLength;
 
         //Set all the active players start times to the beginning of a quarter
         for(int i = 0; i < 5; i++){
             activeRoster.get(i).startTime = seconds;
         }
 
+        printQuarterStats();
+
+        currentQuarter++;
         displayTime();
 
     }
@@ -481,6 +480,40 @@ public class TableActivity extends AppCompatActivity {
 
         }
     }
+
+    public void printStatMap(Map<String, Integer> myStats){
+        for(String stat: this.statKeys){
+            System.out.println(stat+":" +myStats.get(stat));
+        }
+    }
+
+    public void printQuarterStats(){
+        //This just prints all the player stats for the quarter that just ended
+        for(BasketballPlayer player: myRoster){
+            System.out.println("Here are the stats for "+player.playerName+":");
+            switch(currentQuarter){
+                case 1:
+                    printStatMap(player.firstQuarterStats);
+                    break;
+
+                case 2:
+                    printStatMap(player.secondQuarterStats);
+                    break;
+
+                case 3:
+                    printStatMap(player.thirdQuarterStats);
+                    break;
+
+                case 4:
+                    printStatMap(player.fourthQuarterStats);
+                    break;
+
+                default:
+                    System.out.println("You messed up somewhere!");
+            }
+        }
+    }
+
 
     public void printList(ArrayList<String> list){
         for(String item: list){
