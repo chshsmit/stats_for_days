@@ -121,7 +121,7 @@ public class CreateRoster extends AppCompatActivity {
     private MyAdapter aa;
 
     CharSequence[] levelsOfPlay = {"High School", "College", "Professional"};
-    public int quarterTime = 480;
+    public int quarterTime = 10;
 
     public void setQuarterTime(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(CreateRoster.this);     //Instantiate the popup that shows the list
@@ -138,7 +138,7 @@ public class CreateRoster extends AppCompatActivity {
                 //Sub the current active player with the selection made from the list
                 switch(((AlertDialog)dialog).getListView().getCheckedItemPosition()){
                     case 0:
-                        quarterTime = 480;
+                        quarterTime = 10;
                         break;
 
                     case 1:

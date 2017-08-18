@@ -442,6 +442,12 @@ public class TableActivity extends AppCompatActivity {
 
     public void startNewQuarter(View v){
 
+        if(currentQuarter == 4 && seconds == 0){
+            Intent changingActivities = new Intent(getApplicationContext(), EndOfGameStats.class);
+            changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(changingActivities);
+        }
+
         //Reset the time to the start of a quarter
         seconds = defaultQuarterLength;
 
