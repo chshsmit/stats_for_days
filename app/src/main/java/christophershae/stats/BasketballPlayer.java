@@ -52,6 +52,17 @@ public class BasketballPlayer implements Serializable {
         }
     }
 
+    public BasketballPlayer(){
+        for(String stat : this.statKeys){
+            this.playerStats.put(stat, 0);
+            this.firstQuarterStats.put(stat, 0);
+            this.secondQuarterStats.put(stat, 0);
+            this.thirdQuarterStats.put(stat, 0);
+            this.fourthQuarterStats.put(stat, 0);
+            System.out.println(stat+":" +playerStats.get(stat));
+        }
+    }
+
     public void calculateMinutes(){
         secondsPlayed = startTime - takeoutTime;
         totalSecondsPlayed += secondsPlayed;

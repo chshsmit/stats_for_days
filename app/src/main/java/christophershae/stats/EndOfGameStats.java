@@ -18,6 +18,10 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import static christophershae.stats.R.id.fab;
+
 public class EndOfGameStats extends AppCompatActivity {
 
     /**
@@ -35,6 +39,11 @@ public class EndOfGameStats extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    ArrayList<String> roster = new ArrayList<String>();
+    Bundle myBundle = new Bundle();
+    ArrayList<BasketballPlayer> myPlayers = new ArrayList<BasketballPlayer>();
+    BasketballPlayer newPlayer = new BasketballPlayer();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,14 +60,26 @@ public class EndOfGameStats extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        myBundle = getIntent().getExtras();
+        roster = myBundle.getStringArrayList("roster");
+
+
+        for(String name: roster){
+            newPlayer = (BasketballPlayer) myBundle.getSerializable(name);
+            myPlayers.add(newPlayer);
+        }
+
+        printPlayerNames();
+
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
     }
 
@@ -102,12 +123,15 @@ public class EndOfGameStats extends AppCompatActivity {
             switch (position) {
                 case 0:
                     FullGameStats fullGame = new FullGameStats();
+                    fullGame.setArguments(myBundle);
                     return fullGame;
                 case 1:
                     FirstQuarterStats firstQuarter = new FirstQuarterStats();
+                    firstQuarter.setArguments(myBundle);
                     return firstQuarter;
                 case 2:
                     SecondQuarterStats secondQuarter = new SecondQuarterStats();
+                    secondQuarter.setArguments(myBundle);
                     return secondQuarter;
 
                 default:
@@ -133,6 +157,16 @@ public class EndOfGameStats extends AppCompatActivity {
                     return "Second Quarter";
             }
             return null;
+        }
+    }
+
+
+    public void printPlayerNames(){
+        System.out.println("HERE IS YOUR ROSTER FOR THE END OF THE GAME STATS");
+        for(BasketballPlayer player: myPlayers){
+            System.out.println("Name:" +player.playerName);
+            //System.out.println("Seconds Played:" +player.totalSecondsPlayed);
+
         }
     }
 }

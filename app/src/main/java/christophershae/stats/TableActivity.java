@@ -443,9 +443,7 @@ public class TableActivity extends AppCompatActivity {
     public void startNewQuarter(View v){
 
         if(currentQuarter == 4 && seconds == 0){
-            Intent changingActivities = new Intent(getApplicationContext(), EndOfGameStats.class);
-            changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(changingActivities);
+            changeToBoxScore();
         }
 
         //Reset the time to the start of a quarter
@@ -469,6 +467,22 @@ public class TableActivity extends AppCompatActivity {
             activeRoster.get(i).takeoutTime = 0;
             activeRoster.get(i).calculateMinutes();
         }
+    }
+
+    public void changeToBoxScore(){
+        Intent changingToBoxScore = new Intent(getApplicationContext(), EndOfGameStats.class);
+
+        //Adding all the player objects to the intent
+        for(BasketballPlayer player: myRoster){
+            changingToBoxScore.putExtra(player.playerName, player);
+        }
+
+        //Adding the list of player names to the intent
+        changingToBoxScore.putStringArrayListExtra("roster", roster);
+
+
+        changingToBoxScore.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(changingToBoxScore);
     }
 
 
