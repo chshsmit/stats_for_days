@@ -19,7 +19,7 @@ public class BasketballPlayer implements Serializable {
 
 
     //Variables for stats that are being listed on the stat bar
-    int points, rebounds, assists, steals, blocks, madeFt, attemptFt, madeFg, attemptFg;
+    int points, rebounds, assists, steals, blocks, madeFt, attemptFt, madeFg, attemptFg, fouls, turnovers, minutes;
 
     public int secondsPlayed;
     public int totalSecondsPlayed = 0;
@@ -66,6 +66,8 @@ public class BasketballPlayer implements Serializable {
     public void calculateMinutes(){
         secondsPlayed = startTime - takeoutTime;
         totalSecondsPlayed += secondsPlayed;
+
+        this.playerStats.put("MINUTES", totalSecondsPlayed/60);
     }
 
 
@@ -157,6 +159,9 @@ public class BasketballPlayer implements Serializable {
         this.attemptFg = playerStats.get("2PA") + playerStats.get("3PA");
         this.madeFt = playerStats.get("FTM");
         this.attemptFt = playerStats.get("FTA");
+        this.fouls = playerStats.get("FOUL");
+        this.turnovers = playerStats.get("TO");
+        this.minutes = this.totalSecondsPlayed/60;
     }
 
 

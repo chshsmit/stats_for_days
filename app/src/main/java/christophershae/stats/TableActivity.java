@@ -2,8 +2,11 @@ package christophershae.stats;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Region;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,10 +23,17 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.app.AlertDialog;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 
 public class TableActivity extends AppCompatActivity {
@@ -45,6 +55,18 @@ public class TableActivity extends AppCompatActivity {
 
 
     }
+
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        setContentView(R.layout.activity_table);
+//
+//        setStatsToBarPlayer1();
+//        setStatsToBarPlayer2();
+//        setStatsToBarPlayer3();
+//        setStatsToBarPlayer4();
+//        setStatsToBarPlayer5();
+//    }
 
     List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL","MINUTES"));
     List<BasketballPlayer> myRoster = new ArrayList<BasketballPlayer>();
@@ -405,6 +427,10 @@ public class TableActivity extends AppCompatActivity {
                     getMinutesForEndOfQuarter();
                     printPlayerNames();
 
+//                    if(currentQuarter == 4){
+//                        saveRosterToFile();
+//                    }
+
                     displayTime();
                 }
             };
@@ -483,6 +509,49 @@ public class TableActivity extends AppCompatActivity {
 
         changingToBoxScore.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingToBoxScore);
+    }
+
+
+    public void saveRosterToFile(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TableActivity.this);
+
+        final EditText et = new EditText(TableActivity.this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(et);
+
+        // set dialog message
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                try {
+                    //ContextWrapper cw = new ContextWrapper(getApplicationContext());
+                    FileOutputStream outStream = openFileOutput(et.getText().toString(), Context.MODE_PRIVATE);
+                    ObjectOutputStream objectOutStream = new ObjectOutputStream(outStream);
+                    objectOutStream.writeInt(myRoster.size()); // Save size first
+
+                    for (BasketballPlayer p : myRoster) {
+                        objectOutStream.writeObject(p);
+                        objectOutStream.close();
+                    }
+                } catch (FileNotFoundException e){
+                    e.printStackTrace();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
     }
 
 

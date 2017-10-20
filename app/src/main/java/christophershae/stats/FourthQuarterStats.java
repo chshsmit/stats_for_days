@@ -1,6 +1,7 @@
 package christophershae.stats;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,12 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by chrissmith on 8/17/17.
- */
 
-public class FirstQuarterStats extends Fragment {
-
+public class FourthQuarterStats extends Fragment {
     private ArrayList<ListElement> aList;
     private MyAdapter aa;
     ArrayList<String> roster = new ArrayList<String>();
@@ -28,7 +25,7 @@ public class FirstQuarterStats extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.first_quarter_stats, container, false);
+        View rootView = inflater.inflate(R.layout.fourth_quarter_stats, container, false);
 
         aList = new ArrayList<ListElement>();
         myBundle = getArguments();
@@ -99,43 +96,43 @@ public class FirstQuarterStats extends Fragment {
             name.setText(w.playerName);
 
             TextView minutes = (TextView) newView.findViewById(R.id.playersMinutes);
-            minutes.setText(String.format("%d",w.player.firstQuarterStats.get("MINUTES")));
+            minutes.setText(String.format("%d",w.player.fourthQuarterStats.get("MINUTES")));
 
             TextView fieldGoals = (TextView) newView.findViewById(R.id.playersFieldGoals);
-            fieldGoals.setText(String.format("%d",w.player.firstQuarterStats.get("2PM") + w.player.firstQuarterStats.get("3PM"))+"-"+String.format("%d",w.player.firstQuarterStats.get("2PA") + w.player.firstQuarterStats.get("3PA")));
+            fieldGoals.setText(String.format("%d",w.player.fourthQuarterStats.get("2PM") + w.player.fourthQuarterStats.get("3PM"))+"-"+String.format("%d",w.player.fourthQuarterStats.get("2PA") + w.player.fourthQuarterStats.get("3PA")));
 
             TextView threePointFieldGoals = (TextView) newView.findViewById(R.id.playersThreePointFieldGoals);
-            threePointFieldGoals.setText(String.format("%d",w.player.firstQuarterStats.get("3PM"))+"-"+String.format("%d",w.player.firstQuarterStats.get("3PA")));
+            threePointFieldGoals.setText(String.format("%d",w.player.fourthQuarterStats.get("3PM"))+"-"+String.format("%d",w.player.fourthQuarterStats.get("3PA")));
 
             TextView freeThrows = (TextView) newView.findViewById(R.id.playersFreeThrows);
-            freeThrows.setText(String.format("%d",w.player.firstQuarterStats.get("FTM"))+"-"+String.format("%d",w.player.firstQuarterStats.get("FTA")));
+            freeThrows.setText(String.format("%d",w.player.fourthQuarterStats.get("FTM"))+"-"+String.format("%d",w.player.fourthQuarterStats.get("FTA")));
 
             TextView offensiveRebounds = (TextView) newView.findViewById(R.id.playersOffensiveRebounds);
-            offensiveRebounds.setText(String.format("%d",w.player.firstQuarterStats.get("OREB")));
+            offensiveRebounds.setText(String.format("%d",w.player.fourthQuarterStats.get("OREB")));
 
             TextView defensiveRebounds = (TextView) newView.findViewById(R.id.playersDefensiveRebounds);
-            defensiveRebounds.setText(String.format("%d",w.player.firstQuarterStats.get("DREB")));
+            defensiveRebounds.setText(String.format("%d",w.player.fourthQuarterStats.get("DREB")));
 
             TextView rebounds = (TextView) newView.findViewById(R.id.playersRebounds);
-            rebounds.setText(String.format("%d",w.player.firstQuarterStats.get("DREB") + w.player.firstQuarterStats.get("OREB")));
+            rebounds.setText(String.format("%d",w.player.fourthQuarterStats.get("DREB") + w.player.fourthQuarterStats.get("OREB")));
 
             TextView assists = (TextView) newView.findViewById(R.id.playersAssists);
-            assists.setText(String.format("%d",w.player.firstQuarterStats.get("AST")));
+            assists.setText(String.format("%d",w.player.fourthQuarterStats.get("AST")));
 
             TextView steals = (TextView) newView.findViewById(R.id.playersSteals);
-            steals.setText(String.format("%d",w.player.firstQuarterStats.get("STL")));
+            steals.setText(String.format("%d",w.player.fourthQuarterStats.get("STL")));
 
             TextView blocks = (TextView) newView.findViewById(R.id.playersBlocks);
-            blocks.setText(String.format("%d",w.player.firstQuarterStats.get("BLK")));
+            blocks.setText(String.format("%d",w.player.fourthQuarterStats.get("BLK")));
 
             TextView turnovers = (TextView) newView.findViewById(R.id.playersTurnovers);
-            turnovers.setText(String.format("%d",w.player.firstQuarterStats.get("TO")));
+            turnovers.setText(String.format("%d",w.player.fourthQuarterStats.get("TO")));
 
             TextView fouls = (TextView) newView.findViewById(R.id.playersFouls);
-            fouls.setText(String.format("%d",w.player.firstQuarterStats.get("FOUL")));
+            fouls.setText(String.format("%d",w.player.fourthQuarterStats.get("FOUL")));
 
             TextView points = (TextView) newView.findViewById(R.id.playersPoints);
-            points.setText(String.format("%d",(w.player.firstQuarterStats.get("2PM") * 2) + (w.player.firstQuarterStats.get("3PM") * 3) + w.player.firstQuarterStats.get("FTM")));
+            points.setText(String.format("%d",(w.player.fourthQuarterStats.get("2PM") * 2) + (w.player.fourthQuarterStats.get("3PM") * 3) + w.player.fourthQuarterStats.get("FTM")));
 
 
 
@@ -163,5 +160,4 @@ public class FirstQuarterStats extends Fragment {
             aList.add(new ListElement((BasketballPlayer) myBundle.getSerializable(name)));
         }
     }
-
 }

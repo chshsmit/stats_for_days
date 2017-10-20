@@ -2,6 +2,7 @@ package christophershae.stats;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -20,7 +21,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static christophershae.stats.R.id.fab;
+
 
 public class EndOfGameStats extends AppCompatActivity {
 
@@ -64,12 +65,12 @@ public class EndOfGameStats extends AppCompatActivity {
         roster = myBundle.getStringArrayList("roster");
 
 
-        for(String name: roster){
-            newPlayer = (BasketballPlayer) myBundle.getSerializable(name);
-            myPlayers.add(newPlayer);
-        }
-
-        printPlayerNames();
+//        for(String name: roster){
+//            newPlayer = (BasketballPlayer) myBundle.getSerializable(name);
+//            myPlayers.add(newPlayer);
+//        }
+//
+//        printPlayerNames();
 
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(fab);
@@ -134,6 +135,16 @@ public class EndOfGameStats extends AppCompatActivity {
                     secondQuarter.setArguments(myBundle);
                     return secondQuarter;
 
+                case 3:
+                    ThirdQuarterStats thirdQuarter = new ThirdQuarterStats();
+                    thirdQuarter.setArguments(myBundle);
+                    return thirdQuarter;
+
+                case 4:
+                    FourthQuarterStats fourthQuarter = new FourthQuarterStats();
+                    fourthQuarter.setArguments(myBundle);
+                    return fourthQuarter;
+
                 default:
                     return null;
             }
@@ -143,7 +154,7 @@ public class EndOfGameStats extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 5;
         }
 
         @Override
@@ -155,18 +166,24 @@ public class EndOfGameStats extends AppCompatActivity {
                     return "First Quarter";
                 case 2:
                     return "Second Quarter";
+
+                case 3:
+                    return "Third Quarter";
+
+                case 4:
+                    return "Fourth Quarter";
             }
             return null;
         }
     }
 
 
-    public void printPlayerNames(){
-        System.out.println("HERE IS YOUR ROSTER FOR THE END OF THE GAME STATS");
-        for(BasketballPlayer player: myPlayers){
-            System.out.println("Name:" +player.playerName);
-            //System.out.println("Seconds Played:" +player.totalSecondsPlayed);
-
-        }
-    }
+//    public void printPlayerNames(){
+//        System.out.println("HERE IS YOUR ROSTER FOR THE END OF THE GAME STATS");
+//        for(BasketballPlayer player: myPlayers){
+//            System.out.println("Name:" +player.playerName);
+//            //System.out.println("Seconds Played:" +player.totalSecondsPlayed);
+//
+//        }
+//    }
 }

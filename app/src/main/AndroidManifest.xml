@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateRoster">
+        <activity android:name=".CreateRoster"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TableActivity" />
+        <activity android:name=".TableActivity"
+            android:screenOrientation="landscape"/>
+
         <activity
             android:name=".EndOfGameStats"
             android:label="@string/title_activity_end_of_game_stats"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -121,7 +122,7 @@ public class CreateRoster extends AppCompatActivity {
     private MyAdapter aa;
 
     CharSequence[] levelsOfPlay = {"High School", "College", "Professional"};
-    public int quarterTime = 10;
+    public int quarterTime = 480;
 
     public void setQuarterTime(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(CreateRoster.this);     //Instantiate the popup that shows the list
@@ -138,7 +139,7 @@ public class CreateRoster extends AppCompatActivity {
                 //Sub the current active player with the selection made from the list
                 switch(((AlertDialog)dialog).getListView().getCheckedItemPosition()){
                     case 0:
-                        quarterTime = 10;
+                        quarterTime = 480;
                         break;
 
                     case 1:
@@ -172,6 +173,16 @@ public class CreateRoster extends AppCompatActivity {
         myListView.setAdapter(aa);
         aa.notifyDataSetChanged();
     }
+
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        setContentView(R.layout.activity_create_roster);
+//        ListView myListView = (ListView) findViewById(R.id.listView);
+//        myListView.setAdapter(aa);
+//        aa.notifyDataSetChanged();
+//
+//    }
 
 
 
