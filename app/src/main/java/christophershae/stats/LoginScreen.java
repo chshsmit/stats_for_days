@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
@@ -22,9 +24,12 @@ public class LoginScreen extends AppCompatActivity {
 
     private static final String TAG = "EmailPassword";
     public FirebaseAuth mAuth;
+    private DatabaseReference mFireBaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
 
     private EditText mEmailField;
     private EditText mPasswordField;
+    public String userId;
 
 
 
@@ -38,10 +43,16 @@ public class LoginScreen extends AppCompatActivity {
         mPasswordField = (EditText) findViewById(R.id.passwordTextEntry);
 
 
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+
+        //Get reference to user nodes
+        mFireBaseDatabase = mFirebaseInstance.getReference("users");
+
+
         mAuth = FirebaseAuth.getInstance();
     }
 
-    private void createAccount(String email, String password){
+    private void createAccount(final String email, String password){
         Log.d(TAG, "createAccount:" +email);
 
         if(!validateForm()){
@@ -56,6 +67,9 @@ public class LoginScreen extends AppCompatActivity {
                     //Sign in success
                     Log.d(TAG, "createUserWithEmail:success");
                     FirebaseUser user = mAuth.getCurrentUser();
+                    userId = user.getUid();
+                    addNewUserToDatabase(userId, email);
+
                 } else {
                     //If sign in fails, display a message to the user
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -64,6 +78,13 @@ public class LoginScreen extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    public void addNewUserToDatabase(String newUserId, String email){
+        User user = new User(email);
+        mFireBaseDatabase.child(userId).setValue(user);
     }
 
     private void signIn(String email, String passsword) {
