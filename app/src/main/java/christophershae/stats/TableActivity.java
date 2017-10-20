@@ -512,47 +512,6 @@ public class TableActivity extends AppCompatActivity {
     }
 
 
-    public void saveRosterToFile(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TableActivity.this);
-
-        final EditText et = new EditText(TableActivity.this);
-
-        // set prompts.xml to alertdialog builder
-        alertDialogBuilder.setView(et);
-
-        // set dialog message
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                try {
-                    //ContextWrapper cw = new ContextWrapper(getApplicationContext());
-                    FileOutputStream outStream = openFileOutput(et.getText().toString(), Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutStream = new ObjectOutputStream(outStream);
-                    objectOutStream.writeInt(myRoster.size()); // Save size first
-
-                    for (BasketballPlayer p : myRoster) {
-                        objectOutStream.writeObject(p);
-                        objectOutStream.close();
-                    }
-                } catch (FileNotFoundException e){
-                    e.printStackTrace();
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        // show it
-        alertDialog.show();
-    }
 
 
 

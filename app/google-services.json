@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1006985013310",
+    "firebase_url": "https://basketball-stats-9e1b7.firebaseio.com",
+    "project_id": "basketball-stats-9e1b7",
+    "storage_bucket": "basketball-stats-9e1b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006985013310:android:bada2b930221f58b",
+        "android_client_info": {
+          "package_name": "christophershae.stats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006985013310-86scagvin4kgbio8m7jcvb9dur6v544c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2yQziWNwmg4hpWUp4-JCkFjBEsH9VCp4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
