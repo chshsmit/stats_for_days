@@ -53,7 +53,7 @@ public class FullGameStats extends Fragment {
         myListView.setAdapter(aa);
         createStatLines();
         aa.notifyDataSetChanged();
-        readFromFileTest();
+        //readFromFileTest();
 
         return rootView;
     }
@@ -179,32 +179,8 @@ public class FullGameStats extends Fragment {
         }
     }
 
-    ArrayList<BasketballPlayer> oldPlayers = new ArrayList<BasketballPlayer>();
-
-    public void readFromFileTest(){
-        try {
-            FileInputStream inStream = new FileInputStream("thugs");
-            ObjectInputStream objectInStream = new ObjectInputStream(inStream);
-            int count = objectInStream.readInt(); // Get the number of regions
-
-            for (int c = 0; c < count; c++)
-                oldPlayers.add((BasketballPlayer) objectInStream.readObject());
-            objectInStream.close();
-
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        } catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }
 
 
-        System.out.println("HERE ARE THE PLAYERS FROM THE FILE");
-        for(BasketballPlayer player: oldPlayers){
-            System.out.println(player.playerName);
-        }
-    }
 
 
 

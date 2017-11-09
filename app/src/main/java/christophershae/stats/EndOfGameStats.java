@@ -1,5 +1,6 @@
 package christophershae.stats;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -42,6 +43,9 @@ public class EndOfGameStats extends AppCompatActivity {
 
     ArrayList<String> roster = new ArrayList<String>();
     Bundle myBundle = new Bundle();
+
+    public String userId;
+    //public User user;
     ArrayList<BasketballPlayer> myPlayers = new ArrayList<BasketballPlayer>();
     BasketballPlayer newPlayer = new BasketballPlayer();
 
@@ -62,6 +66,7 @@ public class EndOfGameStats extends AppCompatActivity {
 
 
         myBundle = getIntent().getExtras();
+        userId = myBundle.getString("userId");
         roster = myBundle.getStringArrayList("roster");
 
 
@@ -81,6 +86,15 @@ public class EndOfGameStats extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent changingActivities = new Intent(getApplicationContext(),MainActivity.class);
+        changingActivities.putExtra("userId", userId);
+        changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(changingActivities);
 
     }
 

@@ -18,10 +18,17 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.app.AlertDialog;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,35 +45,10 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class TableActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
-
-        Bundle extras = getIntent().getExtras();
-        ArrayList<String> roster = extras.getStringArrayList("roster");
-        createRoster(roster, extras.getInt("quarter_length"));
-        displayTime();
-
-    }
-
-    @Override
-    public void onBackPressed(){
-
-
-    }
-
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        setContentView(R.layout.activity_table);
-//
-//        setStatsToBarPlayer1();
-//        setStatsToBarPlayer2();
-//        setStatsToBarPlayer3();
-//        setStatsToBarPlayer4();
-//        setStatsToBarPlayer5();
-//    }
+    public String userId;
+    public User user;
+    private DatabaseReference mFireBaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
 
     List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL","MINUTES"));
     List<BasketballPlayer> myRoster = new ArrayList<BasketballPlayer>();
@@ -78,8 +60,106 @@ public class TableActivity extends AppCompatActivity {
     //Initial quarter number
     int currentQuarter = 1;
     int defaultQuarterLength;
+    boolean isCollege;
 
 
+    //----------------------------------------------------------------------------------------------------------------
+    //This is the on create method
+    //----------------------------------------------------------------------------------------------------------------
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_table);
+
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+
+        //Get reference to user nodes
+        mFireBaseDatabase = mFirebaseInstance.getReference("users");
+
+        Bundle extras = getIntent().getExtras();
+        ArrayList<String> roster = extras.getStringArrayList("roster");
+        userId = extras.getString("userId");
+        isCollege = extras.getBoolean("isCollege");
+        createRoster(roster, extras.getInt("quarter_length"));
+        displayTime();
+
+
+        mFireBaseDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.println("THIS IS FROM THE DATABASE");
+                System.out.println(dataSnapshot.child(userId).getValue(User.class).email);
+
+                user = dataSnapshot.child(userId).getValue(User.class);
+                System.out.println("This is from the user class from the database");
+                System.out.println(user.email);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed(){
+
+
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------
+    //Initial roster creation
+    //----------------------------------------------------------------------------------------------------------------
+
+
+    //Creates the roster with the information from the intent and sets the time for a quarter
+    public void createRoster(ArrayList<String> playerNames, int quarterLength){
+        defaultQuarterLength = quarterLength;
+        seconds = defaultQuarterLength;
+
+        for (String name : playerNames) {
+            //Create a new player object for every name in the roster
+            BasketballPlayer nextPlayer = new BasketballPlayer(name);
+            myRoster.add(nextPlayer);
+            roster.add(name);
+        }
+
+        makeActiveRoster();
+        setActiveRosterNames();
+        printPlayerNames();
+        printActiveRoster();
+    }
+
+    //Creates the initial starting five
+    public void makeActiveRoster(){
+        for(int i=0; i<5; i++){
+            activeRoster.add(i, myRoster.get(i));
+            activeRoster.get(i).startTime = seconds;
+        }
+    }
+
+    //Puts the starting five names in all the proper text views
+    public void setActiveRosterNames(){
+        TextView playerOneName = (TextView) findViewById(R.id.activePlayer1);
+        playerOneName.setText(activeRoster.get(0).playerName);
+
+        TextView playerTwoName = (TextView) findViewById(R.id.activePlayer2);
+        playerTwoName.setText(activeRoster.get(1).playerName);
+
+        TextView playerThreeName = (TextView) findViewById(R.id.activePlayer3);
+        playerThreeName.setText(activeRoster.get(2).playerName);
+
+        TextView playerFourName = (TextView) findViewById(R.id.activePlayer4);
+        playerFourName.setText(activeRoster.get(3).playerName);
+
+        TextView playerFiveName = (TextView) findViewById(R.id.activePlayer5);
+        playerFiveName.setText(activeRoster.get(4).playerName);
+    }
 
 
 
@@ -178,54 +258,7 @@ public class TableActivity extends AppCompatActivity {
     }
 
 
-    //----------------------------------------------------------------------------------------------------------------
-    //Initial roster creation
-    //----------------------------------------------------------------------------------------------------------------
 
-
-    //Creates the roster with the information from the intent and sets the time for a quarter
-    public void createRoster(ArrayList<String> playerNames, int quarterLength){
-        defaultQuarterLength = quarterLength;
-        seconds = defaultQuarterLength;
-
-        for (String name : playerNames) {
-            //Create a new player object for every name in the roster
-            BasketballPlayer nextPlayer = new BasketballPlayer(name);
-            myRoster.add(nextPlayer);
-            roster.add(name);
-        }
-
-        makeActiveRoster();
-        setActiveRosterNames();
-        printPlayerNames();
-        printActiveRoster();
-    }
-
-    //Creates the initial starting five
-    public void makeActiveRoster(){
-        for(int i=0; i<5; i++){
-            activeRoster.add(i, myRoster.get(i));
-            activeRoster.get(i).startTime = seconds;
-        }
-    }
-
-    //Puts the starting five names in all the proper text views
-    public void setActiveRosterNames(){
-        TextView playerOneName = (TextView) findViewById(R.id.activePlayer1);
-        playerOneName.setText(activeRoster.get(0).playerName);
-
-        TextView playerTwoName = (TextView) findViewById(R.id.activePlayer2);
-        playerTwoName.setText(activeRoster.get(1).playerName);
-
-        TextView playerThreeName = (TextView) findViewById(R.id.activePlayer3);
-        playerThreeName.setText(activeRoster.get(2).playerName);
-
-        TextView playerFourName = (TextView) findViewById(R.id.activePlayer4);
-        playerFourName.setText(activeRoster.get(3).playerName);
-
-        TextView playerFiveName = (TextView) findViewById(R.id.activePlayer5);
-        playerFiveName.setText(activeRoster.get(4).playerName);
-    }
 
 
     //----------------------------------------------------------------------------------------------------------------
@@ -468,8 +501,20 @@ public class TableActivity extends AppCompatActivity {
 
     public void startNewQuarter(View v){
 
+        System.out.println(isCollege);
+
+        if(isCollege && currentQuarter == 2 && seconds == 0){
+            addPlayerListToDatabase();
+        }
+
+
+
+
         if(currentQuarter == 4 && seconds == 0){
-            changeToBoxScore();
+//            for(BasketballPlayer player: myRoster){
+//                player.setFullGameInformation();
+//            }
+            addPlayerListToDatabase();
         }
 
         //Reset the time to the start of a quarter
@@ -480,7 +525,7 @@ public class TableActivity extends AppCompatActivity {
             activeRoster.get(i).startTime = seconds;
         }
 
-        printQuarterStats();
+        //printQuarterStats();
 
         currentQuarter++;
         displayTime();
@@ -495,6 +540,44 @@ public class TableActivity extends AppCompatActivity {
         }
     }
 
+    //------------------------------------------------------------------------------------------------------------------------------
+    //This is where we add the current roster to the database
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    public void addPlayerListToDatabase(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
+        final EditText input = new EditText(this);
+        builder.setView(input);
+
+        // Set the dialog title
+        builder.setTitle("Input Roster Name");
+
+        // Set the action buttons
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                String teamName = input.getText().toString();
+                user.userRosters.put(teamName, myRoster);
+                mFireBaseDatabase.child(userId).setValue(user);
+                changeToBoxScore();
+
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //The user pressed "CANCEL" so nothing needs to be done
+                changeToBoxScore();
+            }
+        });
+        builder.show();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    //This is the code to change activities
+    //------------------------------------------------------------------------------------------------------------------------------
+
     public void changeToBoxScore(){
         Intent changingToBoxScore = new Intent(getApplicationContext(), EndOfGameStats.class);
 
@@ -503,13 +586,17 @@ public class TableActivity extends AppCompatActivity {
             changingToBoxScore.putExtra(player.playerName, player);
         }
 
+        //
+
         //Adding the list of player names to the intent
         changingToBoxScore.putStringArrayListExtra("roster", roster);
+        changingToBoxScore.putExtra("userId", userId);
 
 
         changingToBoxScore.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingToBoxScore);
     }
+
 
 
 

@@ -3,8 +3,10 @@ package christophershae.stats;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +27,14 @@ public class BasketballPlayer implements Serializable {
     public int totalSecondsPlayed = 0;
 
     public int startTime, takeoutTime;
+
+
+
+    //List<Map<String, Integer>> fullGameInformation = new ArrayList<>();
+
+    Map<String, Map<String, Integer>> fullGameInformation = new HashMap<>();
+
+    Map<String, Map> allGamesPlayed = new HashMap<>();
 
     //Creates string keys for all stats and declare a hashtable to store them
     List<String> statKeys = new ArrayList<String>(Arrays.asList("2PM", "2PA", "3PM","3PA","AST","PASS","OREB","DREB","BLK","STL","FTM","FTA","TO","FOUL","MINUTES"));
@@ -48,7 +58,7 @@ public class BasketballPlayer implements Serializable {
             this.secondQuarterStats.put(stat, 0);
             this.thirdQuarterStats.put(stat, 0);
             this.fourthQuarterStats.put(stat, 0);
-            System.out.println(stat+":" +playerStats.get(stat));
+            //System.out.println(stat+":" +playerStats.get(stat));
         }
     }
 
@@ -59,15 +69,15 @@ public class BasketballPlayer implements Serializable {
             this.secondQuarterStats.put(stat, 0);
             this.thirdQuarterStats.put(stat, 0);
             this.fourthQuarterStats.put(stat, 0);
-            System.out.println(stat+":" +playerStats.get(stat));
+            //System.out.println(stat+":" +playerStats.get(stat));
         }
     }
 
     public void calculateMinutes(){
-        secondsPlayed = startTime - takeoutTime;
-        totalSecondsPlayed += secondsPlayed;
+        this.secondsPlayed = this.startTime - this.takeoutTime;
+        this.totalSecondsPlayed += this.secondsPlayed;
 
-        this.playerStats.put("MINUTES", totalSecondsPlayed/60);
+        this.playerStats.put("MINUTES", this.totalSecondsPlayed);
     }
 
 
@@ -119,7 +129,7 @@ public class BasketballPlayer implements Serializable {
     //Helper function to input stats for the current quarter
     public void calculateStatsForCurrentQuarter(Map<String, Integer> quarterStats, String statKey){
         int oldStat = quarterStats.get(statKey);
-        System.out.println("You are updating this stat: " +statKey);
+        //System.out.println("You are updating this stat: " +statKey);
 
         if(statKey.equals("2PM")){
             quarterStats.put(statKey, ++oldStat);
@@ -147,6 +157,21 @@ public class BasketballPlayer implements Serializable {
         }
     }
 
+    public void setFullGameInformation(){
+        this.fullGameInformation.put("Total",playerStats);
+        this.fullGameInformation.put("Q1",firstQuarterStats);
+        this.fullGameInformation.put("Q2",secondQuarterStats);
+        this.fullGameInformation.put("Q3",thirdQuarterStats);
+        this.fullGameInformation.put("Q4",fourthQuarterStats);
+
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        this.allGamesPlayed.put(formattedDate, fullGameInformation);
+    }
+
 
     //Calculate stats for the bar
     public void calculateTotalStats(){
@@ -161,7 +186,7 @@ public class BasketballPlayer implements Serializable {
         this.attemptFt = playerStats.get("FTA");
         this.fouls = playerStats.get("FOUL");
         this.turnovers = playerStats.get("TO");
-        this.minutes = this.totalSecondsPlayed/60;
+        this.minutes = this.totalSecondsPlayed;
     }
 
 
