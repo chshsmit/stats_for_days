@@ -1,7 +1,9 @@
 package christophershae.stats;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static christophershae.stats.R.id.playerName;
+import static christophershae.stats.R.id.start;
 import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String userId;
     public User user;
+    public FirebaseAuth mAuth;
     private DatabaseReference mFireBaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
     private MyAdapter aa;
@@ -50,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
         userId = extras.getString("userId");
         System.out.println(userId);
 
-        //Current user that is logged in id
+        mAuth = FirebaseAuth.getInstance();
 
+        //Current user that is logged in id
         mFirebaseInstance = FirebaseDatabase.getInstance();
 
         //Get reference to user nodes
@@ -66,12 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 // System.out.println(dataSnapshot.child(userId).getValue(User.class).email);
 
                 //System.out.println(dataSnapshot.child(userId).child("userRosters").getKey());
-
-
                 user = dataSnapshot.child(userId).getValue(User.class);
                 addTeamsToListView();
-                System.out.println("This is from the user class from the database");
-                System.out.println(user.email);
             }
 
             @Override
@@ -80,8 +83,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton myFab = (FloatingActionButton) this.findViewById(R.id.signOut);
+        myFab.setOnClickListener(new View.OnClickListener() {
+
+
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Do you want to sign out?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                mAuth.signOut();
+                                changeToLoginScreen();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancelled the dialog
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            }
+        });
+
 
         //addTeamsToListView();
+    }
+
+    public void changeToLoginScreen(){
+        Intent loginScreen = new Intent(getApplicationContext(), LoginScreen.class);
+        loginScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(loginScreen);
     }
 
 

@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,6 +51,8 @@ public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
 
         //Views
         mEmailField = (EditText) findViewById(R.id.emailTextEntry);
@@ -62,8 +66,17 @@ public class LoginScreen extends AppCompatActivity {
         //Current Authorized fire base user
         mAuth = FirebaseAuth.getInstance();
 
+        if(mAuth.getCurrentUser() == null){
+            System.out.println("You are not signed in");
+        } else {
+            System.out.println("You are signed in");
+            changeToMainActivity(mAuth.getUid());
 
-        signIn("chshsmit@gmail.com", "Password");
+
+        }
+
+
+        //signIn("chshsmit@gmail.com", "Password");
     }
 
 
