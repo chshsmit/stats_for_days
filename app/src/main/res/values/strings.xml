@@ -31,8 +31,8 @@
     <string name="name">Name</string>
     <string name="minutes">MIN</string>
     <string name="add">Add</string>
-    <string name="newteam">New</string>
-    <string name="old_teams">Use Previous</string>
+    <string name="newteam">New Team</string>
+    <string name="old_teams">Use Previous Names</string>
 
     <string name="login">Login</string>
     <string name="new_team">New Team?</string>

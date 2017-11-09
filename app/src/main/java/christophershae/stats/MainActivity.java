@@ -170,10 +170,11 @@ public class MainActivity extends AppCompatActivity {
             newView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String s = v.getTag().toString();
+                    String teamName = v.getTag().toString();
                     int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, s, duration);
+                    Toast toast = Toast.makeText(context, teamName, duration);
                     toast.show();
+                    changeToBoxScore(teamName);
                 }
             });
 
@@ -187,6 +188,30 @@ public class MainActivity extends AppCompatActivity {
             aList.add(new ListElement(teamname));
             aa.notifyDataSetChanged();
         }
+    }
+
+
+    public void changeToBoxScore(String teamname){
+        Intent changingToBoxScore = new Intent(getApplicationContext(), EndOfGameStats.class);
+
+        List<BasketballPlayer> myRoster = user.userRosters.get(teamname);
+        ArrayList<String> roster = new ArrayList<>();
+
+        //Adding all the player objects to the intent
+        for(BasketballPlayer player: myRoster){
+            changingToBoxScore.putExtra(player.playerName, player);
+            roster.add(player.playerName);
+        }
+
+        //
+
+        //Adding the list of player names to the intent
+        changingToBoxScore.putStringArrayListExtra("roster", roster);
+        changingToBoxScore.putExtra("userId", userId);
+
+
+        changingToBoxScore.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(changingToBoxScore);
     }
 
 
