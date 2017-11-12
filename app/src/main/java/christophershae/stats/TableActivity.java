@@ -185,7 +185,7 @@ public class TableActivity extends AppCompatActivity {
     //Handles the event of a player's name being clicked indicating a substitution
     public void playerNameClicked(View v){
 
-        if(timer != null) return;
+        //if(timer != null) return;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
         final int viewId = v.getId();
