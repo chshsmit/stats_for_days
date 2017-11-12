@@ -1,5 +1,6 @@
 package christophershae.stats;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -107,7 +108,21 @@ public class TableActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+        builder.setMessage("Are you sure you want to exit? All current game data will be lost.")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        changeToMainActivity(userId);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+        // Create the AlertDialog object and return it
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 
@@ -267,7 +282,7 @@ public class TableActivity extends AppCompatActivity {
 
     public void addStat(View v){
 
-        if(seconds == 0 || timer == null) return;
+        //if(seconds == 0 || timer == null) return;
 
         String statKey = ((Button) v).getText().toString();
 
@@ -595,6 +610,13 @@ public class TableActivity extends AppCompatActivity {
 
         changingToBoxScore.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingToBoxScore);
+    }
+
+    public void changeToMainActivity(String userId){
+        Intent mainScreen = new Intent(getApplicationContext(), MainActivity.class);
+        mainScreen.putExtra("userId", userId);
+        mainScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(mainScreen);
     }
 
 

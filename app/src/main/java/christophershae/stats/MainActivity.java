@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");
-        System.out.println("Its skipping this");
+
 
         mFireBaseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //System.out.println(dataSnapshot.child(userId).child("userRosters").getKey());
                 user = dataSnapshot.child(userId).getValue(User.class);
+                aList.clear();
                 addTeamsToListView();
             }
 
