@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
@@ -73,7 +74,7 @@ public class TableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
 
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseInstance = Utils.getDatabase();
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");
@@ -105,6 +106,7 @@ public class TableActivity extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public void onBackPressed(){
@@ -269,7 +271,7 @@ public class TableActivity extends AppCompatActivity {
         activeRoster.get(currentActivePlayerIndex).startTime = seconds;
 
         //For debugging purposes
-        printPlayerNames();
+        //printPlayerNames();
     }
 
 
@@ -279,6 +281,9 @@ public class TableActivity extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------------------------
     //Setting stat information
     //----------------------------------------------------------------------------------------------------------------
+
+    Stack<BasketballPlayer> undoPlayerList = new Stack<>();
+    Stack<String> undoStatKey = new Stack<>();
 
     public void addStat(View v){
 
@@ -292,30 +297,40 @@ public class TableActivity extends AppCompatActivity {
             case R.id.Player1:
                 System.out.println("Player1");
                 activeRoster.get(0).increaseStat(statKey, currentQuarter);
+                undoPlayerList.push(activeRoster.get(0));
+                undoStatKey.push(statKey);
                 setStatsToBarPlayer1();
                 break;
 
             case R.id.Player2:
                 System.out.println("Player2");
                 activeRoster.get(1).increaseStat(statKey, currentQuarter);
+                undoPlayerList.push(activeRoster.get(1));
+                undoStatKey.push(statKey);
                 setStatsToBarPlayer2();
                 break;
 
             case R.id.Player3:
                 System.out.println("Player3");
                 activeRoster.get(2).increaseStat(statKey, currentQuarter);
+                undoPlayerList.push(activeRoster.get(2));
+                undoStatKey.push(statKey);
                 setStatsToBarPlayer3();
                 break;
 
             case R.id.Player4:
                 System.out.println("Player4");
                 activeRoster.get(3).increaseStat(statKey, currentQuarter);
+                undoPlayerList.push(activeRoster.get(3));
+                undoStatKey.push(statKey);
                 setStatsToBarPlayer4();
                 break;
 
             case R.id.Player5:
                 System.out.println("Player5");
                 activeRoster.get(4).increaseStat(statKey, currentQuarter);
+                undoPlayerList.push(activeRoster.get(4));
+                undoStatKey.push(statKey);
                 setStatsToBarPlayer5();
                 break;
 
@@ -324,6 +339,27 @@ public class TableActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void undoLastStat(View v){
+
+        if(undoPlayerList.isEmpty()) return;
+
+        BasketballPlayer player = undoPlayerList.pop();
+        String statKey = undoStatKey.pop();
+        player.decreaseStat(statKey, currentQuarter);
+        setAllStatsToBar();
+    }
+
+    public void setAllStatsToBar(){
+        setStatsToBarPlayer1();
+        setStatsToBarPlayer2();
+        setStatsToBarPlayer3();
+        setStatsToBarPlayer4();
+        setStatsToBarPlayer5();
+
+    }
+
+
 
     public void setStatsToBarPlayer1(){
         TextView points = (TextView) findViewById(R.id.totPtsPlayer1);
@@ -501,7 +537,7 @@ public class TableActivity extends AppCompatActivity {
     // Updates the time display.
     private void displayTime() {
 
-        TextView v = (TextView) findViewById(R.id.display);
+        TextView v = (TextView) findViewById(R.id.time_keeper);
         int m = seconds / 60;
         int s = seconds % 60;
         v.setText(String.format("%d:%02d", m, s));

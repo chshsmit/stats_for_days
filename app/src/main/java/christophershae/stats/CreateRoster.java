@@ -76,7 +76,7 @@ public class CreateRoster extends AppCompatActivity {
         aa.notifyDataSetChanged();
 
 
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseInstance = Utils.getDatabase();
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");
@@ -293,7 +293,7 @@ public class CreateRoster extends AppCompatActivity {
     public void generateNamesFromOldRoster(View v){
         System.out.println("This function has executed");
 
-        System.out.println(user.email);
+        //System.out.println(user.email);
 
 //        for(String key: user.userRosters.keySet()){
 //            System.out.println(key);

@@ -59,8 +59,7 @@ public class LoginScreen extends AppCompatActivity {
         mPasswordField = (EditText) findViewById(R.id.passwordTextEntry);
 
         //Get an instance of my firebase
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mFirebaseInstance.setPersistenceEnabled(true);
+        mFirebaseInstance = Utils.getDatabase();
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");

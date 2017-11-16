@@ -126,6 +126,8 @@ public class BasketballPlayer implements Serializable {
 
     }
 
+
+
     //Helper function to input stats for the current quarter
     public void calculateStatsForCurrentQuarter(Map<String, Integer> quarterStats, String statKey){
         int oldStat = quarterStats.get(statKey);
@@ -145,6 +147,72 @@ public class BasketballPlayer implements Serializable {
             quarterStats.put("FTA", ++oldStat);
         }else {
             quarterStats.put(statKey, ++oldStat);
+        }
+    }
+
+
+    public void decreaseStat(String statKey, int quarterNumber){
+        int oldStat = playerStats.get(statKey);
+        System.out.println("You are updating this stat: " +statKey);
+
+        if(statKey.equals("2PM")){
+            playerStats.put(statKey, --oldStat);
+            oldStat = playerStats.get("2PA");
+            playerStats.put("2PA", --oldStat);
+        }else if(statKey.equals("3PM")){
+            playerStats.put(statKey, --oldStat);
+            oldStat = playerStats.get("3PA");
+            playerStats.put("3PA", --oldStat);
+        }else if(statKey.equals("FTM")){
+            playerStats.put(statKey, --oldStat);
+            oldStat = playerStats.get("FTA");
+            playerStats.put("FTA", --oldStat);
+        }else {
+            playerStats.put(statKey, --oldStat);
+        }
+
+        //Add the stat to the proper quarter
+        switch(quarterNumber){
+            case 1:
+                decreaseStatsForCurrentQuarter(firstQuarterStats, statKey);
+                break;
+
+            case 2:
+                decreaseStatsForCurrentQuarter(secondQuarterStats, statKey);
+                break;
+
+            case 3:
+                decreaseStatsForCurrentQuarter(thirdQuarterStats, statKey);
+                break;
+
+            case 4:
+                decreaseStatsForCurrentQuarter(fourthQuarterStats, statKey);
+                break;
+        }
+
+        calculateTotalStats();
+
+    }
+
+    //Helper function to input stats for the current quarter
+    public void decreaseStatsForCurrentQuarter(Map<String, Integer> quarterStats, String statKey){
+        int oldStat = quarterStats.get(statKey);
+        //System.out.println("You are updating this stat: " +statKey);
+
+        if(statKey.equals("2PM")){
+            quarterStats.put(statKey, --oldStat);
+            oldStat = quarterStats.get("2PA");
+            quarterStats.put("2PA", --oldStat);
+        }else if(statKey.equals("3PM")){
+            quarterStats.put(statKey, --oldStat);
+            oldStat = quarterStats.get("3PA");
+            quarterStats.put("3PA", --oldStat);
+        }else if(statKey.equals("FTM")){
+            quarterStats.put(statKey, --oldStat);
+            oldStat = quarterStats.get("FTA");
+            quarterStats.put("FTA", --oldStat);
+        }else {
+            quarterStats.put(statKey, --oldStat);
         }
     }
 

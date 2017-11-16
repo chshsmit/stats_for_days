@@ -33,6 +33,17 @@
     <string name="add">Add</string>
     <string name="newgame">New Game</string>
     <string name="old_teams">Use Previous Names</string>
+    <string name="undo">Undo</string>
+    <string name="example_email">example@example.com</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+
+    <string name="point_guard">Point Guard</string>
+    <string name="shooting_guard">Shooting Guard</string>
+    <string name="small_forward">Small Forward</string>
+    <string name="power_forward">Power Forward</string>
+    <string name="center">Center</string>
+
 
     <string name="login">Login</string>
     <string name="new_team">New Team?</string>

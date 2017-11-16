@@ -8,6 +8,7 @@
     android:paddingLeft="64dp"
     android:paddingRight="64dp"
     android:paddingTop="16dp"
+    android:background="@drawable/hardwood"
     tools:context="christophershae.stats.CreateRoster">
 
     <EditText

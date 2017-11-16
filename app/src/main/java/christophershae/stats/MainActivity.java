@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //Current user that is logged in id
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseInstance = Utils.getDatabase();
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");

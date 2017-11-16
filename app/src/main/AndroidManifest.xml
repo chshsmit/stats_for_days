@@ -11,10 +11,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CreateRoster"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".TableActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EndOfGameStats"
             android:label="@string/title_activity_end_of_game_stats"
