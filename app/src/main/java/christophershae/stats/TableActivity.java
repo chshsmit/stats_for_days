@@ -299,46 +299,31 @@ public class TableActivity extends AppCompatActivity {
         switch(parentId){
             case R.id.Player1:
                 System.out.println("Player1");
-                activeRoster.get(0).increaseStat(statKey, currentQuarter);
-                undoPlayerList.push(activeRoster.get(0));
-                undoStatKey.push(statKey);
-                checkIfPlayerFouledOut(statKey, activeRoster.get(0), R.id.activePlayer1);
+                increasePlayerStat(statKey, 0, currentQuarter, R.id.activePlayer1);
                 setStatsToBarPlayer1();
                 break;
 
             case R.id.Player2:
                 System.out.println("Player2");
-                activeRoster.get(1).increaseStat(statKey, currentQuarter);
-                undoPlayerList.push(activeRoster.get(1));
-                undoStatKey.push(statKey);
-                checkIfPlayerFouledOut(statKey, activeRoster.get(1), R.id.activePlayer2);
+                increasePlayerStat(statKey, 1, currentQuarter, R.id.activePlayer2);
                 setStatsToBarPlayer2();
                 break;
 
             case R.id.Player3:
                 System.out.println("Player3");
-                activeRoster.get(2).increaseStat(statKey, currentQuarter);
-                undoPlayerList.push(activeRoster.get(2));
-                undoStatKey.push(statKey);
-                checkIfPlayerFouledOut(statKey, activeRoster.get(2), R.id.activePlayer3);
+                increasePlayerStat(statKey, 2, currentQuarter, R.id.activePlayer3);
                 setStatsToBarPlayer3();
                 break;
 
             case R.id.Player4:
                 System.out.println("Player4");
-                activeRoster.get(3).increaseStat(statKey, currentQuarter);
-                undoPlayerList.push(activeRoster.get(3));
-                undoStatKey.push(statKey);
-                checkIfPlayerFouledOut(statKey, activeRoster.get(3), R.id.activePlayer4);
+                increasePlayerStat(statKey, 3, currentQuarter, R.id.activePlayer4);
                 setStatsToBarPlayer4();
                 break;
 
             case R.id.Player5:
                 System.out.println("Player5");
-                activeRoster.get(4).increaseStat(statKey, currentQuarter);
-                undoPlayerList.push(activeRoster.get(4));
-                undoStatKey.push(statKey);
-                checkIfPlayerFouledOut(statKey, activeRoster.get(4), R.id.activePlayer5);
+                increasePlayerStat(statKey, 4, currentQuarter, R.id.activePlayer5);
                 setStatsToBarPlayer5();
                 break;
 
@@ -346,6 +331,16 @@ public class TableActivity extends AppCompatActivity {
                 System.out.println("You failed");
                 break;
         }
+    }
+
+    public void increasePlayerStat(String statKey, int playerIndex, int currentQuarter, int viewId){
+
+        activeRoster.get(playerIndex).increaseStat(statKey, currentQuarter);             //Increase the stat in the players map
+        undoPlayerList.push(activeRoster.get(playerIndex));                              //Push this player to the top of the undo stack
+        undoStatKey.push(statKey);                                                       //Push the stat key to the top of the undo stack
+        checkIfPlayerFouledOut(statKey, activeRoster.get(playerIndex), viewId);          //Determine if the player fouled out
+
+        return;
     }
 
 
@@ -369,17 +364,20 @@ public class TableActivity extends AppCompatActivity {
 
     public void indicatePlayerHasFouledOut(final BasketballPlayer player, final int playerViewId){
         AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+
+        //Set the message of the dialog
         builder.setMessage(player.playerName+ " has fouled out. You must sub him out.")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //System.out.println(playerViewId);
+                        //Build the substitution dialog for the player that fouled out
                         buildSubstitutionDialog(playerViewId);
                     }
                 });
 
         // Create the AlertDialog object and return it
         AlertDialog dialog = builder.create();
-        dialog.show();
+        dialog.show();        //Show the dialog
     }
 
 
