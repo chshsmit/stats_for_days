@@ -122,6 +122,8 @@ public class BasketballPlayer implements Serializable {
                 break;
         }
 
+        System.out.println(playerStats.get(statKey));
+
         calculateTotalStats();
 
     }
@@ -189,6 +191,8 @@ public class BasketballPlayer implements Serializable {
                 decreaseStatsForCurrentQuarter(fourthQuarterStats, statKey);
                 break;
         }
+
+        System.out.println(playerStats.get(statKey));
 
         calculateTotalStats();
 

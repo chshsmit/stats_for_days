@@ -57,7 +57,6 @@ public class TableActivity extends AppCompatActivity {
     List<BasketballPlayer> activeRoster = new ArrayList<BasketballPlayer>();
     ArrayList<String> roster = new ArrayList<String>();
     ArrayList mSelectedItems = new ArrayList();
-    int playerId, substitutionPlayerIndex;
 
     //Initial quarter number
     int currentQuarter = 1;
@@ -186,13 +185,17 @@ public class TableActivity extends AppCompatActivity {
     //Functions to make a substitution
     //----------------------------------------------------------------------------------------------------------------
 
+    int playerId, substitutionPlayerIndex;
+
     //Handles the event of a player's name being clicked indicating a substitution
     public void playerNameClicked(View v){
+        buildSubstitutionDialog(v.getId());
+    }
 
-        //if(timer != null) return;
-
+    //This function builds the dialog to subout the player with the corresponding viewId
+    public void buildSubstitutionDialog(final int viewId){
+        System.out.println("Using buildSubstitutionDialog");
         AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
-        final int viewId = v.getId();
         // Set the dialog title
         builder.setTitle("Select a player to sub in");
 
@@ -204,6 +207,7 @@ public class TableActivity extends AppCompatActivity {
                 //User clicked "OK"
                 //Sub the current active player with the selection made from the list
                 playerId = viewId;
+                System.out.println(playerId);
                 substitutionPlayerIndex = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
                 subUtilityFunction(playerId, substitutionPlayerIndex);
             }
@@ -250,6 +254,7 @@ public class TableActivity extends AppCompatActivity {
                 break;
 
             default:
+                System.out.println(viewId);
                 System.out.println("You failed");
                 break;
         }
@@ -276,10 +281,6 @@ public class TableActivity extends AppCompatActivity {
         //printPlayerNames();
     }
 
-
-
-
-
     //----------------------------------------------------------------------------------------------------------------
     //Setting stat information
     //----------------------------------------------------------------------------------------------------------------
@@ -301,7 +302,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(0).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(0));
                 undoStatKey.push(statKey);
-                //checkIfPlayerFouledOut(statKey, activeRoster.get(0));
+                checkIfPlayerFouledOut(statKey, activeRoster.get(0), R.id.activePlayer1);
                 setStatsToBarPlayer1();
                 break;
 
@@ -310,7 +311,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(1).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(1));
                 undoStatKey.push(statKey);
-                //checkIfPlayerFouledOut(statKey, activeRoster.get(1));
+                checkIfPlayerFouledOut(statKey, activeRoster.get(1), R.id.activePlayer2);
                 setStatsToBarPlayer2();
                 break;
 
@@ -319,7 +320,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(2).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(2));
                 undoStatKey.push(statKey);
-                //checkIfPlayerFouledOut(statKey, activeRoster.get(2));
+                checkIfPlayerFouledOut(statKey, activeRoster.get(2), R.id.activePlayer3);
                 setStatsToBarPlayer3();
                 break;
 
@@ -328,7 +329,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(3).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(3));
                 undoStatKey.push(statKey);
-                //checkIfPlayerFouledOut(statKey, activeRoster.get(3));
+                checkIfPlayerFouledOut(statKey, activeRoster.get(3), R.id.activePlayer4);
                 setStatsToBarPlayer4();
                 break;
 
@@ -337,7 +338,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(4).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(4));
                 undoStatKey.push(statKey);
-                //checkIfPlayerFouledOut(statKey, activeRoster.get(4));
+                checkIfPlayerFouledOut(statKey, activeRoster.get(4), R.id.activePlayer5);
                 setStatsToBarPlayer5();
                 break;
 
@@ -348,18 +349,38 @@ public class TableActivity extends AppCompatActivity {
     }
 
 
-//    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player){
-//
-//        //If the current stat key is not a foul then end the function
-//        if(statKey != "FOUL") return;
-//
-//        if(isProfessional){
-//            if(player.returnStatValue(statKey) == 6)
-//        }
-//
-//        if(player.returnStatValue(statKey) == 5) indicatePlayerHasFouledOut();
-//
-//    }
+    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player, int playerViewId){
+        System.out.println("Checking if player has fouled out.");
+
+        //If the current stat key is not a foul then end the function
+        if(!statKey.equals("FOUL")) return;
+
+
+        //If the level of play is professional check if the player has 6 fouls
+        if(isProfessional){
+            if(player.returnStatValue(statKey) == 6) indicatePlayerHasFouledOut(player, playerViewId);
+            return;
+        }
+
+        //All other levels fouling out is 5
+        if(player.returnStatValue(statKey) == 5) indicatePlayerHasFouledOut(player, playerViewId);
+
+    }
+
+    public void indicatePlayerHasFouledOut(final BasketballPlayer player, final int playerViewId){
+        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+        builder.setMessage(player.playerName+ " has fouled out. You must sub him out.")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //System.out.println(playerViewId);
+                        buildSubstitutionDialog(playerViewId);
+                    }
+                });
+
+        // Create the AlertDialog object and return it
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 
 
