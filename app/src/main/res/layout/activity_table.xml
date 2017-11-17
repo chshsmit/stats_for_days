@@ -53,6 +53,7 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_made"
+                    android:backgroundTint="@color/made_basket_green"
                     android:textSize="12sp" />
 
                 <Button
@@ -61,6 +62,7 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_made"
+                    android:backgroundTint="@color/made_basket_green"
                     android:textSize="12sp" />
 
                 <Button
@@ -69,12 +71,14 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/assist"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/orebPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/offensive_rebound_puprle"
                     android:onClick="addStat"
                     android:text="@string/offensive_rebound"
                     android:textSize="12sp" />
@@ -83,6 +87,7 @@
                     android:id="@+id/blkPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/block"
                     android:textSize="12sp" />
@@ -93,12 +98,14 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/free_throw_made"
+                    android:backgroundTint="@color/made_basket_green"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/toPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/turnover"
                     android:textSize="12sp" />
@@ -115,6 +122,7 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_atttempted"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:textSize="12sp" />
 
                 <Button
@@ -123,6 +131,7 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_attempted"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:textSize="12sp" />
 
                 <Button
@@ -131,12 +140,15 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/pass"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/drebPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_rebound_yellow"
+                    android:elevation="16dp"
                     android:onClick="addStat"
                     android:text="@string/defensive_rebound"
                     android:textSize="12sp" />
@@ -145,6 +157,7 @@
                     android:id="@+id/stlPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/steal"
                     android:textSize="12sp" />
@@ -155,12 +168,14 @@
                     android:layout_height="40dp"
                     android:onClick="addStat"
                     android:text="@string/free_throw_attempted"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/foulPlayer1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/foul"
                     android:textSize="12sp" />
@@ -335,6 +350,7 @@
                 <Button
                     android:id="@+id/fgMadePlayer2"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_made"
                     android:textSize="12sp" />
@@ -343,6 +359,7 @@
                     android:id="@+id/threeFgMadePlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_made"
                     android:textSize="12sp" />
@@ -351,6 +368,7 @@
                     android:id="@+id/astPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/assist"
                     android:textSize="12sp" />
@@ -359,6 +377,7 @@
                     android:id="@+id/orebPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/offensive_rebound_puprle"
                     android:onClick="addStat"
                     android:text="@string/offensive_rebound"
                     android:textSize="12sp" />
@@ -367,6 +386,7 @@
                     android:id="@+id/blkPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/block"
                     android:textSize="12sp" />
@@ -375,6 +395,7 @@
                     android:id="@+id/ftmPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/free_throw_made"
                     android:textSize="12sp" />
@@ -383,6 +404,7 @@
                     android:id="@+id/toPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/turnover"
                     android:textSize="12sp" />
@@ -397,6 +419,7 @@
                     android:id="@+id/fgAttemptedPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_atttempted"
                     android:textSize="12sp" />
@@ -405,6 +428,7 @@
                     android:id="@+id/threeFgAttemptedPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_attempted"
                     android:textSize="12sp" />
@@ -413,6 +437,7 @@
                     android:id="@+id/passPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/pass"
                     android:textSize="12sp" />
@@ -421,6 +446,7 @@
                     android:id="@+id/drebPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_rebound_yellow"
                     android:onClick="addStat"
                     android:text="@string/defensive_rebound"
                     android:textSize="12sp" />
@@ -429,6 +455,7 @@
                     android:id="@+id/stlPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/steal"
                     android:textSize="12sp" />
@@ -437,6 +464,7 @@
                     android:id="@+id/ftaPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/free_throw_attempted"
                     android:textSize="12sp" />
@@ -445,6 +473,7 @@
                     android:id="@+id/foulPlayer2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/foul"
                     android:textSize="12sp" />
@@ -618,6 +647,7 @@
                 <Button
                     android:id="@+id/fgMadePlayer3"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_made"
                     android:textSize="12sp" />
@@ -626,6 +656,7 @@
                     android:id="@+id/threeFgMadePlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_made"
                     android:textSize="12sp" />
@@ -634,6 +665,7 @@
                     android:id="@+id/astPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/assist"
                     android:textSize="12sp" />
@@ -642,6 +674,7 @@
                     android:id="@+id/orebPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/offensive_rebound_puprle"
                     android:onClick="addStat"
                     android:text="@string/offensive_rebound"
                     android:textSize="12sp" />
@@ -650,6 +683,7 @@
                     android:id="@+id/blkPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/block"
                     android:textSize="12sp" />
@@ -658,6 +692,7 @@
                     android:id="@+id/ftmPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/free_throw_made"
                     android:textSize="12sp" />
@@ -666,6 +701,7 @@
                     android:id="@+id/toPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/turnover"
                     android:textSize="12sp" />
@@ -680,6 +716,7 @@
                     android:id="@+id/fgAttemptedPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_atttempted"
                     android:textSize="12sp" />
@@ -688,6 +725,7 @@
                     android:id="@+id/threeFgAttemptedPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_attempted"
                     android:textSize="12sp" />
@@ -696,6 +734,7 @@
                     android:id="@+id/passPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/pass"
                     android:textSize="12sp" />
@@ -704,6 +743,7 @@
                     android:id="@+id/drebPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_rebound_yellow"
                     android:onClick="addStat"
                     android:text="@string/defensive_rebound"
                     android:textSize="12sp" />
@@ -712,6 +752,7 @@
                     android:id="@+id/stlPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/steal"
                     android:textSize="12sp" />
@@ -720,6 +761,7 @@
                     android:id="@+id/ftaPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/free_throw_attempted"
                     android:textSize="12sp" />
@@ -728,6 +770,7 @@
                     android:id="@+id/foulPlayer3"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/foul"
                     android:textSize="12sp" />
@@ -901,6 +944,7 @@
                 <Button
                     android:id="@+id/fgMadePlayer4"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_made"
                     android:textSize="12sp" />
@@ -909,6 +953,7 @@
                     android:id="@+id/threeFgMadePlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_made"
                     android:textSize="12sp" />
@@ -917,6 +962,7 @@
                     android:id="@+id/astPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/assist"
                     android:textSize="12sp" />
@@ -925,6 +971,7 @@
                     android:id="@+id/orebPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/offensive_rebound_puprle"
                     android:onClick="addStat"
                     android:text="@string/offensive_rebound"
                     android:textSize="12sp" />
@@ -933,6 +980,7 @@
                     android:id="@+id/blkPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/block"
                     android:textSize="12sp" />
@@ -941,6 +989,7 @@
                     android:id="@+id/ftmPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/free_throw_made"
                     android:textSize="12sp" />
@@ -949,6 +998,7 @@
                     android:id="@+id/toPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/turnover"
                     android:textSize="12sp" />
@@ -963,6 +1013,7 @@
                     android:id="@+id/fgAttemptedPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_atttempted"
                     android:textSize="12sp" />
@@ -971,6 +1022,7 @@
                     android:id="@+id/threeFgAttemptedPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_attempted"
                     android:textSize="12sp" />
@@ -979,6 +1031,7 @@
                     android:id="@+id/passPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/pass"
                     android:textSize="12sp" />
@@ -987,6 +1040,7 @@
                     android:id="@+id/drebPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_rebound_yellow"
                     android:onClick="addStat"
                     android:text="@string/defensive_rebound"
                     android:textSize="12sp" />
@@ -995,6 +1049,7 @@
                     android:id="@+id/stlPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/steal"
                     android:textSize="12sp" />
@@ -1003,6 +1058,7 @@
                     android:id="@+id/ftaPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/free_throw_attempted"
                     android:textSize="12sp" />
@@ -1011,6 +1067,7 @@
                     android:id="@+id/foulPlayer4"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/foul"
                     android:textSize="12sp" />
@@ -1184,6 +1241,7 @@
                 <Button
                     android:id="@+id/fgMadePlayer5"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_made"
                     android:textSize="12sp" />
@@ -1192,6 +1250,7 @@
                     android:id="@+id/threeFgMadePlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_made"
                     android:textSize="12sp" />
@@ -1200,6 +1259,7 @@
                     android:id="@+id/astPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/assist"
                     android:textSize="12sp" />
@@ -1208,6 +1268,7 @@
                     android:id="@+id/orebPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/offensive_rebound_puprle"
                     android:onClick="addStat"
                     android:text="@string/offensive_rebound"
                     android:textSize="12sp" />
@@ -1216,6 +1277,7 @@
                     android:id="@+id/blkPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/block"
                     android:textSize="12sp" />
@@ -1224,6 +1286,7 @@
                     android:id="@+id/ftmPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/made_basket_green"
                     android:onClick="addStat"
                     android:text="@string/free_throw_made"
                     android:textSize="12sp" />
@@ -1232,6 +1295,7 @@
                     android:id="@+id/toPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/turnover"
                     android:textSize="12sp" />
@@ -1246,6 +1310,7 @@
                     android:id="@+id/fgAttemptedPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/two_pointer_atttempted"
                     android:textSize="12sp" />
@@ -1254,6 +1319,7 @@
                     android:id="@+id/threeFgAttemptedPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/three_pointer_attempted"
                     android:textSize="12sp" />
@@ -1262,6 +1328,7 @@
                     android:id="@+id/passPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/asisst_and_pass_blue"
                     android:onClick="addStat"
                     android:text="@string/pass"
                     android:textSize="12sp" />
@@ -1270,6 +1337,7 @@
                     android:id="@+id/drebPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_rebound_yellow"
                     android:onClick="addStat"
                     android:text="@string/defensive_rebound"
                     android:textSize="12sp" />
@@ -1278,6 +1346,7 @@
                     android:id="@+id/stlPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/defensive_orange"
                     android:onClick="addStat"
                     android:text="@string/steal"
                     android:textSize="12sp" />
@@ -1286,6 +1355,7 @@
                     android:id="@+id/ftaPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/free_throw_attempted"
                     android:textSize="12sp" />
@@ -1294,6 +1364,7 @@
                     android:id="@+id/foulPlayer5"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:backgroundTint="@color/missed_basket_red"
                     android:onClick="addStat"
                     android:text="@string/foul"
                     android:textSize="12sp" />

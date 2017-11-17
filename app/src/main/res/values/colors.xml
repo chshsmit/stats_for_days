@@ -6,4 +6,10 @@
     <color name="fire_brick_red">#B0171F</color>
     <color name="basketball_orange">#FFBA30</color>
     <color name="black">#000000</color>
+    <color name="made_basket_green">#79AF21</color>
+    <color name="missed_basket_red">#ED1A0B</color>
+    <color name="asisst_and_pass_blue">#448CFF</color>
+    <color name="offensive_rebound_puprle">#A347FF</color>
+    <color name="defensive_rebound_yellow">#FBFF0F</color>
+    <color name="defensive_orange">#FFA100</color>
 </resources>

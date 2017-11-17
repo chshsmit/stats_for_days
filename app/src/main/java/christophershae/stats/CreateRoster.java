@@ -224,6 +224,7 @@ public class CreateRoster extends AppCompatActivity {
     CharSequence[] levelsOfPlay = {"High School", "College", "Professional"};
     public int quarterTime = 2;
     public boolean isCollege = false;
+    public boolean isProfessional = false;
 
     public void setQuarterTime(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(CreateRoster.this);     //Instantiate the popup that shows the list
@@ -250,6 +251,7 @@ public class CreateRoster extends AppCompatActivity {
 
                     case 2:
                         quarterTime = 720;
+                        isProfessional = true;
                         break;
                 }
 
@@ -363,6 +365,7 @@ public class CreateRoster extends AppCompatActivity {
         changingActivities.putExtra("userId", userId);
         changingActivities.putExtra("quarter_length", quarterTime);
         changingActivities.putExtra("isCollege", isCollege);
+        changingActivities.putExtra("isProfessional", isProfessional);
         changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingActivities);
     }

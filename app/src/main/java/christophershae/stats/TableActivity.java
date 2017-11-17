@@ -63,6 +63,7 @@ public class TableActivity extends AppCompatActivity {
     int currentQuarter = 1;
     int defaultQuarterLength;
     boolean isCollege;
+    boolean isProfessional;
 
 
     //----------------------------------------------------------------------------------------------------------------
@@ -83,6 +84,7 @@ public class TableActivity extends AppCompatActivity {
         ArrayList<String> roster = extras.getStringArrayList("roster");
         userId = extras.getString("userId");
         isCollege = extras.getBoolean("isCollege");
+        isProfessional = extras.getBoolean("isProfessional");
         createRoster(roster, extras.getInt("quarter_length"));
         displayTime();
 
@@ -299,6 +301,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(0).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(0));
                 undoStatKey.push(statKey);
+                //checkIfPlayerFouledOut(statKey, activeRoster.get(0));
                 setStatsToBarPlayer1();
                 break;
 
@@ -307,6 +310,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(1).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(1));
                 undoStatKey.push(statKey);
+                //checkIfPlayerFouledOut(statKey, activeRoster.get(1));
                 setStatsToBarPlayer2();
                 break;
 
@@ -315,6 +319,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(2).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(2));
                 undoStatKey.push(statKey);
+                //checkIfPlayerFouledOut(statKey, activeRoster.get(2));
                 setStatsToBarPlayer3();
                 break;
 
@@ -323,6 +328,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(3).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(3));
                 undoStatKey.push(statKey);
+                //checkIfPlayerFouledOut(statKey, activeRoster.get(3));
                 setStatsToBarPlayer4();
                 break;
 
@@ -331,6 +337,7 @@ public class TableActivity extends AppCompatActivity {
                 activeRoster.get(4).increaseStat(statKey, currentQuarter);
                 undoPlayerList.push(activeRoster.get(4));
                 undoStatKey.push(statKey);
+                //checkIfPlayerFouledOut(statKey, activeRoster.get(4));
                 setStatsToBarPlayer5();
                 break;
 
@@ -339,6 +346,23 @@ public class TableActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
+//    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player){
+//
+//        //If the current stat key is not a foul then end the function
+//        if(statKey != "FOUL") return;
+//
+//        if(isProfessional){
+//            if(player.returnStatValue(statKey) == 6)
+//        }
+//
+//        if(player.returnStatValue(statKey) == 5) indicatePlayerHasFouledOut();
+//
+//    }
+
+
+
 
     public void undoLastStat(View v){
 

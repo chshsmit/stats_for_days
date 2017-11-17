@@ -217,6 +217,11 @@ public class BasketballPlayer implements Serializable {
     }
 
 
+    public int returnStatValue(String statKey){
+        return this.playerStats.get(statKey);
+    }
+
+
 
     //Prints out all the stats for a certain hashmap
     public void showStats(Map<String, Integer> myStats){
