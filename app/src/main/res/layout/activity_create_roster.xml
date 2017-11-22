@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player Name" />
+        android:hint="@string/player_name" />
 
     <Button
         android:id="@+id/addPlayer"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="425dp"
         android:onClick="createPlayer"
-        android:text="Add"
+        android:text="@string/add"
         android:layout_below="@+id/enterPlayerName"
         android:layout_alignStart="@+id/enterPlayerName"
         android:layout_marginStart="23dp" />
@@ -39,7 +39,7 @@
         android:layout_below="@+id/enterPlayerName"
         android:layout_toRightOf="@+id/addPlayer"
         android:onClick="changeToStats"
-        android:text="Finish" />
+        android:text="@string/finish_roster_creation" />
 
     <ListView
         android:id="@+id/listView"

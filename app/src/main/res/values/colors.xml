@@ -12,4 +12,5 @@
     <color name="offensive_rebound_puprle">#A347FF</color>
     <color name="defensive_rebound_yellow">#FBFF0F</color>
     <color name="defensive_orange">#FFA100</color>
+    <color name="button_blue">#0000FF</color>
 </resources>

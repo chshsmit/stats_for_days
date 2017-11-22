@@ -1,5 +1,7 @@
 package christophershae.stats;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -181,6 +183,54 @@ public class LoginScreen extends AppCompatActivity {
         return valid;
 
 
+    }
+
+    private String userEmail;
+    public void forgotPassword(View v){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        //LayoutInflater inflater = this.getLayoutInflater();
+        //alertDialogBuilder.setView(inflater.inflate(R.layout.goal_budget_diag, null));
+        final EditText inputEmail = new EditText(this);
+        inputEmail.setHint("example@example.com");
+        alertDialogBuilder.setView(inputEmail);
+
+        alertDialogBuilder.setTitle("Send Password Reset Email");
+        alertDialogBuilder.setPositiveButton("Send",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1)
+                    {
+                        userEmail = inputEmail.getText().toString().trim();
+
+                        mAuth = FirebaseAuth.getInstance();
+                        mAuth.sendPasswordResetEmail(userEmail)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Log.d(TAG, "Email sent.");
+                                            Toast.makeText(LoginScreen.this, "Sent Password Reset Email", Toast.LENGTH_LONG).show();
+                                        }else{
+                                            System.out.println("You failed");
+                                        }
+                                    }
+                                });
+
+
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1)
+            {
+
+            }
+        });
+
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 

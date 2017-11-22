@@ -37,6 +37,9 @@
     <string name="example_email">example@example.com</string>
     <string name="password">Password</string>
     <string name="create_account">Create Account</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="player_name">Player Name</string>
+    <string name="finish_roster_creation">Finish</string>
 
     <string name="point_guard">Point Guard</string>
     <string name="shooting_guard">Shooting Guard</string>
