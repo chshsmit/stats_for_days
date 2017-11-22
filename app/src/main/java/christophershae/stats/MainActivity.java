@@ -113,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
         //addTeamsToListView();
     }
 
+    @Override
+    public void onBackPressed(){
+        
+    }
+
     public void changeToLoginScreen(){
         Intent loginScreen = new Intent(getApplicationContext(), LoginScreen.class);
         loginScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
