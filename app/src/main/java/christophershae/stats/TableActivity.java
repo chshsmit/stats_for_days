@@ -644,13 +644,19 @@ public class TableActivity extends AppCompatActivity {
         builder.setView(input);
 
         // Set the dialog title
-        builder.setTitle("Input Roster Name");
+        builder.setTitle("Input Game Name");
 
         // Set the action buttons
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 String teamName = input.getText().toString();
+                teamName = teamName.replace("/","");
+                teamName = teamName.replace(".","");
+                teamName = teamName.replace("$","");
+                teamName = teamName.replace("[","");
+                teamName = teamName.replace("]","");
+                teamName = teamName.replace("#","");
                 user.userRosters.put(teamName, myRoster);
                 mFireBaseDatabase.child(userId).setValue(user);
                 changeToBoxScore();

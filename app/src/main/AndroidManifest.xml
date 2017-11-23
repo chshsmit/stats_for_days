@@ -20,7 +20,8 @@
             android:label="@string/title_activity_end_of_game_stats"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginScreen">
+        <activity android:name=".LoginScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

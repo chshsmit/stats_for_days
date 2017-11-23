@@ -1524,8 +1524,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_toStartOf="@+id/button_stop"
             android:onClick="onClickStart"
             android:text="@string/start" />
@@ -1534,12 +1533,11 @@
             android:id="@+id/button_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="41dp"
-            android:onClick="onClickStop"
-            android:text="@string/stop"
             android:layout_alignBaseline="@+id/button_start"
             android:layout_alignBottom="@+id/button_start"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:onClick="onClickStop"
+            android:text="@string/stop" />
 
         <Button
             android:id="@+id/newQuarterButton"
