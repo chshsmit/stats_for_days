@@ -1,29 +1,15 @@
 package christophershae.stats;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.ContextWrapper;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Region;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TableLayout;
 import android.widget.TextView;
-import android.app.AlertDialog;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,22 +17,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
-
-public class TableActivity extends AppCompatActivity {
-
+public class NewStatLayout extends AppCompatActivity {
     public String userId;
     public User user;
     private DatabaseReference mFireBaseDatabase;
@@ -72,7 +48,7 @@ public class TableActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_new_stat_layout);
 
         mFirebaseInstance = Utils.getDatabase();
 
@@ -111,7 +87,7 @@ public class TableActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewStatLayout.this);
         builder.setMessage("Are you sure you want to exit? All current game data will be lost.")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -134,6 +110,7 @@ public class TableActivity extends AppCompatActivity {
     //Initial roster creation
     //----------------------------------------------------------------------------------------------------------------
 
+
     //Creates the roster with the information from the intent and sets the time for a quarter
     public void createRoster(ArrayList<String> playerNames, int quarterLength){
         defaultQuarterLength = quarterLength;
@@ -148,8 +125,6 @@ public class TableActivity extends AppCompatActivity {
 
         makeActiveRoster();
         setActiveRosterNames();
-        printPlayerNames();
-        printActiveRoster();
     }
 
     //Creates the initial starting five
@@ -186,39 +161,6 @@ public class TableActivity extends AppCompatActivity {
 
     int playerId, substitutionPlayerIndex;
 
-    //Handles the event of a player's name being clicked indicating a substitution
-    public void playerNameClicked(View v){
-        buildSubstitutionDialog(v.getId());
-    }
-
-    //This function builds the dialog to subout the player with the corresponding viewId
-    public void buildSubstitutionDialog(final int viewId){
-        System.out.println("Using buildSubstitutionDialog");
-        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
-        // Set the dialog title
-        builder.setTitle("Select a player to sub in");
-
-        builder.setSingleChoiceItems(roster.toArray(new CharSequence[roster.size()]),0, null);
-        // Set the action buttons
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                //User clicked "OK"
-                //Sub the current active player with the selection made from the list
-                playerId = viewId;
-                System.out.println(playerId);
-                substitutionPlayerIndex = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
-                subUtilityFunction(playerId, substitutionPlayerIndex);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                //The user pressed "CANCEL" so nothing needs to be done
-            }
-        });
-        builder.show();
-    }
 
     public void subUtilityFunction(int viewId, int which){
         switch(viewId){
@@ -280,48 +222,49 @@ public class TableActivity extends AppCompatActivity {
         //printPlayerNames();
     }
 
-    //----------------------------------------------------------------------------------------------------------------
-    //Setting stat information
-    //----------------------------------------------------------------------------------------------------------------
-
     Stack<BasketballPlayer> undoPlayerList = new Stack<>();
     Stack<String> undoStatKey = new Stack<>();
 
 
+    int playerToUpdate;
+    public void playerNameClicked(View v){
+        playerToUpdate = v.getId();
+    }
+
+
     public void addStat(View v){
-
         //if(seconds == 0 || timer == null) return;
-
         String statKey = ((Button) v).getText().toString();
+        addStat(statKey, playerToUpdate);
+    }
 
-        int parentId = ((View) v.getParent().getParent()).getId();
-
-        switch(parentId){
-            case R.id.Player1:
+    private void addStat(String statKey, int playerId){
+        switch(playerId){
+            case R.id.activePlayer1:
                 System.out.println("Player1");
                 increasePlayerStat(statKey, 0, currentQuarter, R.id.activePlayer1);
                 setStatsToBarPlayer1();
                 break;
 
-            case R.id.Player2:
+            case R.id.activePlayer2:
                 System.out.println("Player2");
                 increasePlayerStat(statKey, 1, currentQuarter, R.id.activePlayer2);
                 setStatsToBarPlayer2();
                 break;
 
-            case R.id.Player3:
+            case R.id.activePlayer3:
                 System.out.println("Player3");
                 increasePlayerStat(statKey, 2, currentQuarter, R.id.activePlayer3);
                 setStatsToBarPlayer3();
                 break;
 
-            case R.id.Player4:
+            case R.id.activePlayer4:
                 System.out.println("Player4");
                 increasePlayerStat(statKey, 3, currentQuarter, R.id.activePlayer4);
                 setStatsToBarPlayer4();
                 break;
 
-            case R.id.Player5:
+            case R.id.activePlayer5:
                 System.out.println("Player5");
                 increasePlayerStat(statKey, 4, currentQuarter, R.id.activePlayer5);
                 setStatsToBarPlayer5();
@@ -331,54 +274,56 @@ public class TableActivity extends AppCompatActivity {
                 System.out.println("You failed");
                 break;
         }
+
     }
 
     public void increasePlayerStat(String statKey, int playerIndex, int currentQuarter, int viewId){
+        activeRoster.get(playerIndex).increaseStat(statKey, currentQuarter);
 
-        activeRoster.get(playerIndex).increaseStat(statKey, currentQuarter);             //Increase the stat in the players map
+        //Increase the stat in the players map
         undoPlayerList.push(activeRoster.get(playerIndex));                              //Push this player to the top of the undo stack
         undoStatKey.push(statKey);                                                       //Push the stat key to the top of the undo stack
-        checkIfPlayerFouledOut(statKey, activeRoster.get(playerIndex), viewId);          //Determine if the player fouled out
+        //checkIfPlayerFouledOut(statKey, activeRoster.get(playerIndex), viewId);          //Determine if the player fouled out
 
         return;
     }
 
 
-    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player, int playerViewId){
-        System.out.println("Checking if player has fouled out.");
-
-        //If the current stat key is not a foul then end the function
-        if(!statKey.equals("FOUL")) return;
-
-
-        //If the level of play is professional check if the player has 6 fouls
-        if(isProfessional){
-            if(player.returnStatValue(statKey) == 6) indicatePlayerHasFouledOut(player, playerViewId);
-            return;
-        }
-
-        //All other levels fouling out is 5
-        if(player.returnStatValue(statKey) == 5) indicatePlayerHasFouledOut(player, playerViewId);
-
-    }
-
-    public void indicatePlayerHasFouledOut(final BasketballPlayer player, final int playerViewId){
-        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);
-
-        //Set the message of the dialog
-        builder.setMessage(player.playerName+ " has fouled out. You must sub him out.")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //System.out.println(playerViewId);
-                        //Build the substitution dialog for the player that fouled out
-                        buildSubstitutionDialog(playerViewId);
-                    }
-                });
-
-        // Create the AlertDialog object and return it
-        AlertDialog dialog = builder.create();
-        dialog.show();        //Show the dialog
-    }
+//    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player, int playerViewId){
+//        System.out.println("Checking if player has fouled out.");
+//
+//        //If the current stat key is not a foul then end the function
+//        if(!statKey.equals("FOUL")) return;
+//
+//
+//        //If the level of play is professional check if the player has 6 fouls
+//        if(isProfessional){
+//            if(player.returnStatValue(statKey) == 6) indicatePlayerHasFouledOut(player, playerViewId);
+//            return;
+//        }
+//
+//        //All other levels fouling out is 5
+//        if(player.returnStatValue(statKey) == 5) indicatePlayerHasFouledOut(player, playerViewId);
+//
+//    }
+//
+//    public void indicatePlayerHasFouledOut(final BasketballPlayer player, final int playerViewId){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(NewStatLayout.this);
+//
+//        //Set the message of the dialog
+//        builder.setMessage(player.playerName+ " has fouled out. You must sub him out.")
+//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        //System.out.println(playerViewId);
+//                        //Build the substitution dialog for the player that fouled out
+//                        buildSubstitutionDialog(playerViewId);
+//                    }
+//                });
+//
+//        // Create the AlertDialog object and return it
+//        AlertDialog dialog = builder.create();
+//        dialog.show();        //Show the dialog
+//    }
 
 
 
@@ -393,6 +338,10 @@ public class TableActivity extends AppCompatActivity {
         setAllStatsToBar();
     }
 
+
+    //------------------------------------------------------------------------------------------------------------------------------
+    //Functions to set stats to bar
+    //------------------------------------------------------------------------------------------------------------------------------
     public void setAllStatsToBar(){
         setStatsToBarPlayer1();
         setStatsToBarPlayer2();
@@ -401,7 +350,6 @@ public class TableActivity extends AppCompatActivity {
         setStatsToBarPlayer5();
 
     }
-
 
 
     public void setStatsToBarPlayer1(){
@@ -552,7 +500,6 @@ public class TableActivity extends AppCompatActivity {
                     seconds = 0;
                     timer = null;
                     getMinutesForEndOfQuarter();
-                    printPlayerNames();
 
 //                    if(currentQuarter == 4){
 //                        saveRosterToFile();
@@ -602,8 +549,6 @@ public class TableActivity extends AppCompatActivity {
         }
 
 
-
-
         if(currentQuarter == 4 && seconds == 0){
 //            for(BasketballPlayer player: myRoster){
 //                player.setFullGameInformation();
@@ -634,12 +579,13 @@ public class TableActivity extends AppCompatActivity {
         }
     }
 
+
     //------------------------------------------------------------------------------------------------------------------------------
     //This is where we add the current roster to the database
     //------------------------------------------------------------------------------------------------------------------------------
 
     public void addPlayerListToDatabase(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(TableActivity.this);     //Instantiate the popup that shows the list
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewStatLayout.this);     //Instantiate the popup that shows the list
         final EditText input = new EditText(this);
         builder.setView(input);
 
@@ -704,75 +650,4 @@ public class TableActivity extends AppCompatActivity {
         startActivity(mainScreen);
     }
 
-
-
-
-
-
-
-    //------------------------------------------------------------------------------------------------------------------------------
-    //Debugging tools
-    //------------------------------------------------------------------------------------------------------------------------------
-
-    public void printPlayerNames(){
-        System.out.println("Here is your roster");
-        for(BasketballPlayer player: myRoster){
-            System.out.println("Name:" +player.playerName);
-            System.out.println("Seconds Played:" +player.totalSecondsPlayed);
-
-        }
-    }
-
-    public void printStatMap(Map<String, Integer> myStats){
-        for(String stat: this.statKeys){
-            System.out.println(stat+":" +myStats.get(stat));
-        }
-    }
-
-    public void printQuarterStats(){
-        //This just prints all the player stats for the quarter that just ended
-        for(BasketballPlayer player: myRoster){
-            System.out.println("Here are the stats for "+player.playerName+":");
-            switch(currentQuarter){
-                case 1:
-                    printStatMap(player.firstQuarterStats);
-                    break;
-
-                case 2:
-                    printStatMap(player.secondQuarterStats);
-                    break;
-
-                case 3:
-                    printStatMap(player.thirdQuarterStats);
-                    break;
-
-                case 4:
-                    printStatMap(player.fourthQuarterStats);
-                    break;
-
-                default:
-                    System.out.println("You messed up somewhere!");
-            }
-        }
-    }
-
-
-    public void printList(ArrayList<String> list){
-        for(String item: list){
-            System.out.println(item);
-        }
-    }
-
-
-
-    public void printActiveRoster(){
-        System.out.println("Here are the five players on the court");
-        for(BasketballPlayer player: activeRoster){
-            System.out.println(player.playerName);
-        }
-    }
 }
-
-
-
-
