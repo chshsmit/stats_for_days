@@ -110,7 +110,6 @@ public class NewStatLayout extends AppCompatActivity {
     //Initial roster creation
     //----------------------------------------------------------------------------------------------------------------
 
-
     //Creates the roster with the information from the intent and sets the time for a quarter
     public void createRoster(ArrayList<String> playerNames, int quarterLength){
         defaultQuarterLength = quarterLength;
@@ -288,6 +287,16 @@ public class NewStatLayout extends AppCompatActivity {
         return;
     }
 
+    public void undoLastStat(View v){
+
+        if(undoPlayerList.isEmpty()) return;
+
+        BasketballPlayer player = undoPlayerList.pop();
+        String statKey = undoStatKey.pop();
+        player.decreaseStat(statKey, currentQuarter);
+        setAllStatsToBar();
+    }
+
 
 //    public void checkIfPlayerFouledOut(String statKey, BasketballPlayer player, int playerViewId){
 //        System.out.println("Checking if player has fouled out.");
@@ -327,18 +336,6 @@ public class NewStatLayout extends AppCompatActivity {
 
 
 
-
-    public void undoLastStat(View v){
-
-        if(undoPlayerList.isEmpty()) return;
-
-        BasketballPlayer player = undoPlayerList.pop();
-        String statKey = undoStatKey.pop();
-        player.decreaseStat(statKey, currentQuarter);
-        setAllStatsToBar();
-    }
-
-
     //------------------------------------------------------------------------------------------------------------------------------
     //Functions to set stats to bar
     //------------------------------------------------------------------------------------------------------------------------------
@@ -348,9 +345,7 @@ public class NewStatLayout extends AppCompatActivity {
         setStatsToBarPlayer3();
         setStatsToBarPlayer4();
         setStatsToBarPlayer5();
-
     }
-
 
     public void setStatsToBarPlayer1(){
         TextView points = (TextView) findViewById(R.id.totPtsPlayer1);
@@ -570,7 +565,6 @@ public class NewStatLayout extends AppCompatActivity {
         displayTime();
 
     }
-
 
     public void getMinutesForEndOfQuarter(){
         for(int i = 0; i < 5; i++){

@@ -38,7 +38,7 @@ public class LoginScreen extends AppCompatActivity {
     private FirebaseDatabase mFirebaseInstance;
 
     //This is the user object that will reference whichever account is logged in
-    public User user;
+    public christophershae.stats.User user;
 
     //My input views
     private EditText mEmailField;
@@ -61,7 +61,7 @@ public class LoginScreen extends AppCompatActivity {
         mPasswordField = (EditText) findViewById(R.id.passwordTextEntry);
 
         //Get an instance of my firebase
-        mFirebaseInstance = Utils.getDatabase();
+        mFirebaseInstance = christophershae.stats.Utils.getDatabase();
 
         //Get reference to user nodes
         mFireBaseDatabase = mFirebaseInstance.getReference("users");
@@ -89,7 +89,7 @@ public class LoginScreen extends AppCompatActivity {
 
     //Adding the new user object to the database
     public void addNewUserToDatabase(String newUserId, String email){
-        user = new User(email);
+        user = new christophershae.stats.User(email);
         mFireBaseDatabase.child(newUserId).setValue(user);
     }
 
@@ -156,10 +156,6 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
-
-//    private void signOut() {
-//        mAuth.signOut();
-//    }
 
     private boolean validateForm() {
         boolean valid = true;
@@ -250,7 +246,7 @@ public class LoginScreen extends AppCompatActivity {
 
 
     public void changeToMainActivity(String currentUserId){
-        Intent changingActivities = new Intent(getApplicationContext(),MainActivity.class);
+        Intent changingActivities = new Intent(getApplicationContext(), christophershae.stats.MainActivity.class);
         changingActivities.putExtra("userId", currentUserId);
         changingActivities.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(changingActivities);
